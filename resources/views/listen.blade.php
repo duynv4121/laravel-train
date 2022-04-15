@@ -12,7 +12,7 @@
     <script>
          Echo.channel('notification')
             .listen('eventNotification', (e) => {
-                alert("Ai đó vừa cập nhật công việc của mình");
+                alert(e.message);
             });
     </script>
 </body>

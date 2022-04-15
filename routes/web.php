@@ -3,6 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\todoController;
 use App\Events\eventNotification;
+use App\Http\Controllers\registerController;
+
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -31,7 +35,22 @@ Route::get('/listen', function(){
     return view('listen');
 });
 
-
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/subscribe', [todoController::class, 'subscribe']);
+
+Route::post('/store-sub', [todoController::class, 'storeSub']);
+
+Route::get('/mail', [todoController::class, 'mail']);
+
+Route::post('/test-mail', [todoController::class, 'testMail']);
+
+Route::post('/destroyAll', [todoController::class, 'destroyAll']);
+
+Route::get('/validate', [registerController::class, 'index']);
+
+Route::post('/checkValidate', [registerController::class, 'check']);
+
+
