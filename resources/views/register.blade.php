@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <style>
@@ -26,7 +27,7 @@
                     Parent's Information
                 </div>
                 <div class="card-body">
-                    <div class="parent col-md-12">
+                    <div class="parent row col-md-12">
                         <div class="col-md-4">
                             <label>1. Father/Guardian <br>&nbsp;</label>
                             <input name="fatherId" type="hidden" id="fatherId" value="0">
@@ -58,6 +59,83 @@
                                             id="fatherEmailAddress" placeholder="eg: example@gmail.com">
                                 </div>
                             </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label>1. Father/Guardian <br>&nbsp;</label>
+                            <input name="fatherId" type="hidden" id="fatherId" value="0">
+                            <div class="col-md-12">
+                                <div class="form-group ui left labeled input">
+                                    <label for="motherFamilyName">Family Name <span class="required_label">*</span></label>
+                                    <input type="text" class="form-control" id="motherFamilyName"
+                                            placeholder="eg: Waston">
+                                         
+                                </div>
+                                <div class="form-group">
+                                    <label for="motherFirstName">First Name <span class="required_label">*</span></label>
+                                    <input type="text" class="form-control" id="motherFirstName"
+                                            placeholder="eg: John">
+                                </div>
+                                <div class="form-group">
+                                    <label for="motherMobilePhone">Mobile Phone (+65) <span class="required_label">*</span></label>
+                                    <input type="text" class="form-control" id="motherMobilePhone"
+                                            placeholder="eg: 9876 5883">
+                                </div>
+                                <div class="form-group">
+                                    <label for="motherOfficePhone">Office Phone (+65)</label>
+                                    <input type="text" class="form-control" id="motherOfficePhone"
+                                            placeholder="eg: 6273 8885 / 9876 5484">
+                                </div>
+                                <div class="form-group">
+                                    <label for="motherEmailAddress">Email Address <span class="required_label">*</span></label>
+                                    <input type="email" class="form-control"
+                                            id="motherEmailAddress" placeholder="eg: example@gmail.com">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Authorized Person (for Afternoon pick ups, if necessary) <br>&nbsp;</label>
+                            <input name="fatherId" type="hidden" id="fatherId" value="0">
+                            <div class="col-md-12">
+                                <div class="form-group ui left labeled input">
+                                    <label for="guardianFamilyName">Family Name <span class="required_label">*</span></label>
+                                    <input type="text" class="form-control" id="guardianFamilyName"
+                                            placeholder="eg: Waston">
+                                         
+                                </div>
+                                <div class="form-group">
+                                    <label for="guardianFirstName">First Name <span class="required_label">*</span></label>
+                                    <input type="text" class="form-control" id="guardianFirstName"
+                                            placeholder="eg: John">
+                                </div>
+                                <div class="form-group">
+                                    <label for="guardianMobilePhone">Mobile Phone (+65) <span class="required_label">*</span></label>
+                                    <input type="text" class="form-control" id="guardianMobilePhone"
+                                            placeholder="eg: 9876 5883">
+                                </div>
+                                <div class="form-group">
+                                    <label for="guardianOfficePhone">Office Phone (+65)</label>
+                                    <input type="text" class="form-control" id="guardianOfficePhone"
+                                            placeholder="eg: 6273 8885 / 9876 5484">
+                                </div>
+                                <div class="form-group">
+                                    <label for="guardianEmailAddress">Email Address <span class="required_label">*</span></label>
+                                    <input type="email" class="form-control"
+                                            id="guardianEmailAddress" placeholder="eg: example@gmail.com">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <p for="" class="text-center text-bold">Please indicate the first point of contact for all matters,
+                                include emergencies:</p>
+                            <ul class="peopleContactRadioContainer text-center">
+                                <div class="text-center">
+                                    <label><input name="peopleContact" type="radio" class="form-check-input" id="father" value="father" checked> Father</label>
+                                    <label class="padding-left-15"><input name="peopleContact" type="radio" class="form-check-input" id="mother" value="mother"> Mother</label>
+                                    <label class="padding-left-15"><input name="peopleContact" type="radio" class="form-check-input" id="guardian" value="guardian"> Guardian</label>
+                                </div>
+                            </ul>
                         </div>
                     </div>
             </div>
@@ -183,34 +261,83 @@
                     Pick up/ Drop off Address (for Shuttle service riders, this will be your billing address)
                 </div>
                 <div class="card-body">
-                    <div class="parent col-md-12 row addMoreChild">
-                        <div class="col-md-8">
-                            <input name="fatherId" type="hidden" id="fatherId" value="0">
-                            <div class="col-md-12">
-                                <div class="form-group ui left labeled input">
-                                    <label for="fatherFamilyName">Block/ House Number<span class="required_label">*</span></label>
-                                    <input type="text" name="familyName" class="form-control" id="helo"
-                                            placeholder="eg: Waston">
-                                </div>
-                                <div class="form-group">
-                                    <label for="fatherFirstName">Unit Number <span class="required_label">*</span></label>
-                                    <input name="unit" type="text" class="form-control" id="unit"
-                                            placeholder="eg: Alice">       
-                                </div>
-                                <div class="form-group">
-                                    <label for="fatherFirstName">Unit Number <span class="required_label">*</span></label>
-                                    <input name="unit" type="text" class="form-control" id="unit"
-                                            placeholder="eg: dd/mm/yyyy">                            
-                                </div>
-                                <div class="form-group">
-                                    <label for="fatherFirstName">Unit Number <span class="required_label">*</span></label>
-                                    <input name="unit" type="text" class="form-control" id="unit"
-                                            placeholder="eg: 99985610001">
-                                </div>
-                                <div class="form-group">
-                                    <label for="fatherFirstName">Unit Number <span class="required_label">*</span></label>
-                                    <input name="unit" type="text" class="form-control" id="unit"
-                                            placeholder="eg: G1">
+                    <div class="parent col-md-12 addMoreChild">
+                        <div class="row">
+                            <div class="col-md-8 child1">
+                                <input name="fatherId" type="hidden" id="fatherId" value="0">
+                                <div class="col-md-12">
+                                    <div class="form-group ui left labeled input">
+                                        <label for="fatherFamilyName">Family name <span class="required_label">*</span></label>
+                                        <input type="text" name="familyName[1]" class="form-control familyName"
+                                                placeholder="eg: Waston">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="fatherFirstName">Given name <span class="required_label">*</span></label>
+                                        <input name="givenName[1]" type="text" class="form-control givenName"
+                                                placeholder="eg: Alice">       
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="fatherFirstName">Date of Birth <span class="required_label">*</span></label>
+                                        <input name="birthDay[1]" type="text" class="form-control birthDay"
+                                                placeholder="eg: dd/mm/yyyy">       
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="fatherFirstName">Student ID <span class="required_label">*</span></label>
+                                        <input name="schoolId[1]" type="text" class="form-control schoolId" id="unit"
+                                                placeholder="eg: G1">                            
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="fatherFirstName">Grade <span class="required_label">*</span></label>
+                                        <input name="grade[1]" type="text" class="form-control grade"
+                                                placeholder="eg: 99985610001">
+                                    </div>
+                                    <div class="d-flex">
+                                        <label for="">Gender</label>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                                            <label class="form-check-label" for="flexRadioDefault1">
+                                              Male
+                                            </label>
+                                          </div>
+                                          <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                                            <label class="form-check-label" for="flexRadioDefault2">
+                                              Famale
+                                            </label>
+                                          </div>
+                                    </div>
+
+                                    <select class="form-select select" aria-label="Default select example">
+                                        <option value="1" selected>First day of semester</option>
+                                        <option value="2">Choose date</option>
+                                    </select>
+
+                                    <div style="display:none" class="form-group date-select">
+                                        <input name="date-choose[1]" type="text" class="form-control date-choose"
+                                                placeholder="eg: dd/mm/yyyy">       
+                                    </div>
+
+
+                                    {{-- checkbox route --}}
+                                    <div class="form-group col-md-12 routeCheck">
+                                        <strong>For Regular Bus Service:</strong><br>
+                                        <label>&nbsp;&nbsp;Route <span class="required_label">*</span></label>
+                                        <ul class="listRoute">
+                                            <label class="lable-radio"><input name="route[1]" type="radio" class="form-check-input routeCheckbox" value="2 Ways (Regular Bus Service)"> 2 Ways </label></br>
+                                            <label class="lable-radio"><input name="route[1]" type="radio" class="form-check-input routeCheckbox" value="1 Way (AM) (Regular Bus Service)"> 1 Way (AM) </label></br>
+                                            <label class="lable-radio"><input name="route[1]" type="radio" class="form-check-input routeCheckbox" value="1 Way (PM) (Regular Bus Service)"> 1 Way (PM) </label></br>
+                                        </ul>
+                                        <br>
+                                        <strong>For Cairnhill 9 Shuttle Service (Shuttle bus fees apply):</strong><br>
+                                        <label>&nbsp;&nbsp;Route <span class="required_label">*</span></label>
+                                        <ul class="listRoute">
+                                            <label class="lable-radio"><input name="route[1]" type="radio" class="form-check-input routeCheckbox" value="2 Ways (Cairnhill 9 Shuttle Service)"> 2 Ways </label></br>
+                                            <label class="lable-radio"><input name="route[1]" type="radio" class="form-check-input routeCheckbox" value="1 Way (AM) (Cairnhill 9 Shuttle Service)"> 1 Way (AM) </label></br>
+                                            <label class="lable-radio"><input name="route[1]" type="radio" class="form-check-input routeCheckbox" value="1 Way (PM) (Cairnhill 9 Shuttle Service)"> 1 Way (PM) </label></br>
+                                        </ul>
+                                    </div>
+                                    <div class="show-error"></div>
+
                                 </div>
                             </div>
                         </div>
@@ -219,7 +346,38 @@
                 <a class="btn btn-success" id="addMore">Add more</a>
             </div>
 
-            <button class="btn btn-danger d-block mx-auto mt-5" type="submit">Submit</button>
+            <div>
+                Please read the Terms and Conditions & Bus Regulations carefully. This forms an integral part of our agreement in respect to bus transportation for your child. By submitting this form, you confirm that you agree to the terms and conditions contained herein and undertake to take responsibility for your child's adherence to the same.
+                Applications must be received within the deadlines stipulated. Your application will take between 2 to 4 weeks to be processed. During high traffic periods, your application may take a little longer to be processed. You will be informed of the results of your application by email. Bus information will be sent to the email indicated by you to be the first point of contact. Please note that a seat for your child can only be confirmed when full payments has been received.
+                All students are required to purchase a beacon. The beacon is a security feature that allows us to ascertain your child’s location when he is a rider on the bus on the bus. The yearly subscription of $25 (before GST) will be charged to your child’s transport fares. Replacement beacons are charged at $25 (before GST) a piece. These beacons are non-transferable. Students on Shuttle buses do not need a beacon for travel.
+                Bus Details will be provided to you via email. Please ensure that the email addresses provided to us are valid and are readily accessible by you.
+                When using the School Bus Transport Service, the use of Child Safety Restraint (CSR)- (Ride Safer Vest) for all students up to Year 1 is strongly encouraged. Students who are less than 1.35 meters in height are recommended to use the approved Ride Safer Vest or Mifold booster seat (as per School Safety standard).
+                School approved CSR products are available and can be purchased directly from Taxi Baby :https://sg.taxibaby.com/
+                You can contact us at chatsworth@tongtar.com or approach the Transport Coordinator in school. Alternatively, you can also ring us at 6261 5537 during office hours (8.30am to 4.00pm) and ask to speak with the School Transport Team.
+            </div>
+            <div class="col-md-12 text-center">
+                <ul class="agreeTermContainer text-center">
+                    <div>
+                        <label class="text-center">
+                            <input type="checkbox" class="form-check-input" name="policy1"  value="1">
+                            I agree to the terms of service
+                        </label>
+                    </div>
+                </ul>
+            </div>
+            <div class="col-md-8 col-md-offset-2 text-center" style="padding: unset;">
+                <ul class="text-center" style="padding: unset;">
+                    <div>
+                        <label class="text-center">
+                            <input type="checkbox" class="form-check-input" name="policy2" value="1">
+                            I acknowledge that I have read and understood the Data Protection Notice, and consent
+                            to the collection, use and disclosure of my personal data by Tong Tar Transport Service Pte Ltd for the purposes set out in the Notice.
+                        </label>
+                    </div>
+                </ul>
+            </div>
+
+            <button id="submit" class="btn btn-danger d-block mx-auto mt-5" type="submit">Submit</button>
         </form>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
