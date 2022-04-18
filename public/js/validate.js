@@ -186,6 +186,15 @@ function removeRequiredFather() {
     $("#fatherEmailAddress").nextAll(".error").remove();
 }
 
+function removeNameFather() {
+    $('#fatherFamilyName').attr('name', '');
+    $('#fatherFirstName').attr('name', '');
+    $('#fatherMobilePhone').attr('name', '');
+    $('#fatherOfficePhone').attr('name', '');
+    $('#fatherEmailAddress').attr('name', '');
+}
+
+
 function addRequiredMother() {
     $('#motherFamilyName').attr('name', 'motherFamilyName');
     $('#motherFirstName').attr('name', 'motherFirstName');
@@ -199,6 +208,14 @@ function removeRequiredMother() {
     $("#motherMobilePhone").nextAll(".error").remove();
     $("#motherFirstName").nextAll(".error").remove();
     $("#motherEmailAddress").nextAll(".error").remove();
+}
+
+function removeNameMother() {
+    $('#motherFamilyName').attr('name', '');
+    $('#motherFirstName').attr('name', '');
+    $('#motherMobilePhone').attr('name', '');
+    $('#motherOfficePhone').attr('name', '');
+    $('#motherEmailAddress').attr('name', '');
 }
 
 function addRequiredGuardian() {
@@ -216,15 +233,119 @@ function removeRequiredGuardian() {
     $("#guardianEmailAddress").nextAll(".error").remove();
 }
 
+function removeNamedGuardian() {
+    $('#guardianFamilyName').attr('name', '');
+    $('#guardianFirstName').attr('name', '');
+    $('#guardianMobilePhone').attr('name', '');
+    $('#guardianOfficePhone').attr('name', '');
+    $('#guardianEmailAddress').attr('name', '');
+}
+
 $('input[type=radio][name=peopleContact]').change(function() {
-    if (this.value == 'mother' && $('[name=paymentCheck]' == 'mother')) {
+    if (this.value == 'mother' && $("[name='paymentCheck']:checked").val() == 'mother') {
         addRequiredMother();
         removeRequiredFather();
         removeRequiredGuardian();
+        removeNameFather()
+    }else if(this.value == 'mother' && $("[name='paymentCheck']:checked").val() == 'other'){
+        addRequiredMother();
+        removeRequiredFather();
+        removeRequiredGuardian();
+        removeNameFather()
+        removeNamedGuardian();
+    }else if(this.value == 'mother' && $("[name='paymentCheck']:checked").val() == 'father'){
+        addRequiredMother();
+        addRequiredFather();
+        removeRequiredGuardian();
+        removeNamedGuardian();
+    }else if(this.value == 'father' && $("[name='paymentCheck']:checked").val() == 'father'){
+        addRequiredFather();
+        removeRequiredMother();
+        removeRequiredGuardian();
+        removeNameMother();
+        removeNamedGuardian();
+    }else if(this.value == 'father' && $("[name='paymentCheck']:checked").val() == 'mother'){
+        addRequiredFather();
+        addRequiredMother();
+        removeRequiredGuardian();
+        removeNamedGuardian();
+    }else if(this.value == 'father' && $("[name='paymentCheck']:checked").val() == 'other'){
+        addRequiredFather();
+        removeRequiredMother();
+        removeRequiredGuardian();
+        removeNameMother();
+        removeNamedGuardian();
+    }else if(this.value == 'guardian' && $("[name='paymentCheck']:checked").val() == 'father'){
+        addRequiredGuardian();
+        addRequiredFather();
+        removeRequiredMother();
+        removeNameMother();
+    }else if(this.value == 'guardian' && $("[name='paymentCheck']:checked").val() == 'mother'){
+        addRequiredGuardian();
+        removeRequiredFather();
+        addRequiredMother();
+        removeNameFather();
+    }else if(this.value == 'guardian' && $("[name='paymentCheck']:checked").val() == 'other'){
+        addRequiredGuardian();
+        removeRequiredFather();
+        removeRequiredMother();
+        removeNameFather();
+        removeNameMother();
     }
 })
 
 
+
+$('input[type=radio][name=paymentCheck]').change(function() {
+    if (this.value == 'mother' && $("[name='peopleContact']:checked").val() == 'mother') {
+        addRequiredMother();
+        removeRequiredFather();
+        removeRequiredGuardian();
+        removeNameFather()
+    }else if(this.value == 'mother' && $("[name='peopleContact']:checked").val() == 'guardian'){
+        addRequiredMother();
+        removeRequiredFather();
+        addRequiredGuardian();
+        removeNameFather()
+    }else if(this.value == 'mother' && $("[name='peopleContact']:checked").val() == 'father'){
+        addRequiredMother();
+        addRequiredFather();
+        removeRequiredGuardian();
+        removeNamedGuardian();
+    }else if(this.value == 'father' && $("[name='peopleContact']:checked").val() == 'father'){
+        addRequiredFather();
+        removeRequiredMother();
+        removeRequiredGuardian();
+        removeNameMother();
+        removeNamedGuardian();
+    }else if(this.value == 'father' && $("[name='peopleContact']:checked").val() == 'mother'){
+        addRequiredFather();
+        addRequiredMother();
+        removeRequiredGuardian();
+        removeNamedGuardian();
+    }else if(this.value == 'father' && $("[name='peopleContact']:checked").val() == 'guardian'){
+        addRequiredFather();
+        removeRequiredMother();
+        addRequiredGuardian();
+        removeNameMother();
+    }else if(this.value == 'other' && $("[name='peopleContact']:checked").val() == 'father'){
+        addRequiredGuardian();
+        addRequiredFather();
+        removeRequiredMother();
+        removeNameMother();
+    }else if(this.value == 'other' && $("[name='peopleContact']:checked").val() == 'mother'){
+        addRequiredGuardian();
+        removeRequiredFather();
+        addRequiredMother();
+        removeNameFather();
+    }else if(this.value == 'other' && $("[name='peopleContact']:checked").val() == 'guardian'){
+        addRequiredGuardian();
+        removeRequiredFather();
+        removeRequiredMother();
+        removeNameFather();
+        removeNameMother();
+    }
+})
 
 var inputPayment = $(".inputPayment");
 var checkBoxPay = $("input[type='checkbox'][name=detailBelow]")
