@@ -28,18 +28,46 @@
     }
 </style>
 <body>
-    <div class="modal-fixed">
+    <div style="display: none;" class="modal-fixed">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title text-center" id="exampleModalLabel">Cairnhill 9 Shuttle Bus Fare – Academic Year 2021/2022</h5>
             </div>
             <div class="modal-body">
-                ...
+                <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th scope="col">S/NO</th>
+                        <th scope="col">Route Type</th>
+                        <th scope="col">Up to 30 seater</th>
+                        <th scope="col">>30 seater</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>One Way</td>
+                        <td>$535.00</td>
+                        <td>$500.00</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">2</th>
+                        <td>Two Ways</td>
+                        <td>$1,020.00</td>
+                        <td>$950.00</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <h6>Remarks:</h6>
+                  <ul>
+                      <li>- The above pricing is dependent on sufficient uptake for the service.</li>
+                      <li>- Price includes GST and is chargeable for the semester (2 semesters in an academic year).</li>
+                      <li>- Transport charges are payable twice a year, before the start of the semester and service.</li>
+                  </ul>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-primary close-btn">Confirm</button>
             </div>
             </div>
         </div>
@@ -357,9 +385,9 @@
                                         <strong>For Cairnhill 9 Shuttle Service (Shuttle bus fees apply):</strong><br>
                                         <label>&nbsp;&nbsp;Route <span class="required_label">*</span></label>
                                         <ul class="listRoute">
-                                            <label class="lable-radio"><input name="route[1]" type="radio" class="form-check-input routeCheckbox" value="2 Ways (Cairnhill 9 Shuttle Service)"> 2 Ways </label></br>
-                                            <label class="lable-radio"><input name="route[1]" type="radio" class="form-check-input routeCheckbox" value="1 Way (AM) (Cairnhill 9 Shuttle Service)"> 1 Way (AM) </label></br>
-                                            <label class="lable-radio"><input name="route[1]" type="radio" class="form-check-input routeCheckbox" value="1 Way (PM) (Cairnhill 9 Shuttle Service)"> 1 Way (PM) </label></br>
+                                            <label class="lable-radio"><input name="route[1]" type="radio" class="form-check-input routeCheckbox showModal" value="2 Ways (Cairnhill 9 Shuttle Service)"> 2 Ways </label></br>
+                                            <label class="lable-radio"><input name="route[1]" type="radio" class="form-check-input routeCheckbox showModal" value="1 Way (AM) (Cairnhill 9 Shuttle Service)"> 1 Way (AM) </label></br>
+                                            <label class="lable-radio"><input name="route[1]" type="radio" class="form-check-input routeCheckbox showModal" value="1 Way (PM) (Cairnhill 9 Shuttle Service)"> 1 Way (PM) </label></br>
                                         </ul>
                                     </div>
                                     <div class="show-error"></div>

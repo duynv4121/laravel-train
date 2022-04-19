@@ -375,6 +375,19 @@ $('input[type=radio][name=paymentCheck]').change(function() {
     }
 });
 
+
+$(".showModal").click(function(){
+    $(".modal-fixed").css("display", "block");
+    $("body").css("overflowY", "hidden");
+})
+
+
+$(".close-btn").click(function(){
+    $(".modal-fixed").css("display", "none");
+    $("body").css("overflowY", "auto");
+})
+
+
 checkBoxPay.on('change', function() {
     if (checkBoxPay.is(':checked')) {
         inputPayment.prop('disabled', true);
