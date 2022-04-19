@@ -16,8 +16,34 @@
     .inputPayment:hover:disabled{
         cursor: not-allowed;
     }
+    .modal-fixed{
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.6);
+        z-index: 1000;
+        
+    }
 </style>
 <body>
+    <div class="modal-fixed">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+            </div>
+        </div>
+    </div>
     <div class="container">
         <form action="{{url('checkValidate')}}" id="parentInformation" method="post">
         @csrf
