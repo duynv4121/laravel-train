@@ -5,12 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.css" integrity="sha512-zxBiDORGDEAYDdKLuYU9X/JaJo/DPzE42UubfBw9yg8Qvb2YRRIQ8v4KsGHOx2H1/+sdSXyXxLXv5r7tHc9ygg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <style>
     div .error{
         color: red;
+        font-size: 14px;
+    }
+
+    .card{
+        border-color: #006d29; !important;
+    }
+
+    .fa-xmark:hover{
+        cursor: pointer;
     }
 
     .inputPayment:hover:disabled{
@@ -25,6 +36,26 @@
         background-color: rgba(0, 0, 0, 0.6);
         z-index: 1000;
         
+    }
+    .text-policy{
+        width: 900px;
+        margin: 20px auto;
+        text-align: justify;
+        font-size: 14px;
+    }
+
+    #submit{
+        width: 200px;
+        margin: 20px auto;
+        text-align: justify;
+        font-size: 14px;
+        display: block;
+        text-align: center;
+        background-color: #3c3e3c;
+    }
+
+    .croppie-container{
+        height: auto; !important;
     }
 </style>
 <body>
@@ -72,19 +103,32 @@
             </div>
         </div>
     </div>
+
+    <div style="display: none;" class="modal-fixed modal-show-calendar">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <p>Please refer to Terms and Conditions regarding the processing of applications and bus service charges.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary close-btn-modal">Confirm</button>
+            </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container">
-        <form action="{{url('checkValidate')}}" id="parentInformation" method="post">
+        <form id="parentInformation">
         @csrf
             {{-- Parent's Information --}}
             <div class="card">
-                <div style="background-color: #6ab04c" class="card-header text-center">
+                <div style="background-color: #006d29; color: #fff;" class="card-header">
                     Parent's Information
                 </div>
                 <div class="card-body">
                     <div class="parent row col-md-12">
                         <div class="col-md-4">
                             <label>1. Father/Guardian <br>&nbsp;</label>
-                            <input name="fatherId" type="hidden" id="fatherId" value="0">
                             <div class="col-md-12">
                                 <div class="form-group ui left labeled input">
                                     <label for="fatherFamilyName">Family Name <span class="required_label">*</span></label>
@@ -115,8 +159,7 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <label>1. Father/Guardian <br>&nbsp;</label>
-                            <input name="fatherId" type="hidden" id="fatherId" value="0">
+                            <label>2. Mother/Guardian<br>&nbsp;</label>
                             <div class="col-md-12">
                                 <div class="form-group ui left labeled input">
                                     <label for="motherFamilyName">Family Name <span class="required_label">*</span></label>
@@ -147,8 +190,7 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <label>Authorized Person (for Afternoon pick ups, if necessary) <br>&nbsp;</label>
-                            <input name="fatherId" type="hidden" id="fatherId" value="0">
+                            <label>3. Authorized Person<br>&nbsp;</label>
                             <div class="col-md-12">
                                 <div class="form-group ui left labeled input">
                                     <label for="guardianFamilyName">Family Name <span class="required_label">*</span></label>
@@ -192,19 +234,18 @@
                             </ul>
                         </div>
                     </div>
+                </div>
             </div>
 
 
             {{-- Pick up/ Drop off Address (for Shuttle service riders, this will be your billing address)  --}}
-
-            <div class="card">
-                <div style="background-color: #6ab04c" class="card-header text-center">
+            <div class="card mt-5">
+                <div style="background-color: #006d29; color: #fff;" class="card-header">
                     Pick up/ Drop off Address (for Shuttle service riders, this will be your billing address)
                 </div>
                 <div class="card-body">
                     <div class="parent col-md-12 row">
                         <div class="col-md-3">
-                            <input name="fatherId" type="hidden" id="fatherId" value="0">
                             <div class="col-md-12">
                                 <div class="form-group ui left labeled input">
                                     <label for="fatherFamilyName">Block/ House Number<span class="required_label">*</span></label>
@@ -219,7 +260,6 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <input name="fatherId" type="hidden" id="fatherId" value="0">
                             <div class="col-md-12">
                                 <div class="form-group ui left labeled input">
                                     <label for="fatherFamilyName">Street Name <span class="required_label">*</span></label>
@@ -234,10 +274,9 @@
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <input name="fatherId" type="hidden" id="fatherId" value="0">
                             <div class="col-md-12">
                                 <div class="form-group ui left labeled input">
-                                    <label for="fatherFamilyName">Block/ House Number <span class="required_label">*</span></label>
+                                    <label for="fatherFamilyName">Postal Code  <span class="required_label">*</span></label>
                                     <input name="postalCode" type="text" class="form-control" id="postalCode"
                                             placeholder="eg: 123456">
                                 </div>
@@ -250,8 +289,8 @@
 
             {{-- Billing Address --}}
 
-            <div class="card">
-                <div style="background-color: #6ab04c" class="card-header text-center">
+            <div class="card mt-5">
+                <div style="background-color: #006d29; color: #fff;" class="card-header">
                     Pick up/ Drop off Address (for Shuttle service riders, this will be your billing address)
                 </div>
                 <div class="card-body">
@@ -274,31 +313,30 @@
                         </div>
                        <div class="col-md-12 row">
                             <div class="col-md-6">
-                                <input name="fatherId" type="hidden" id="fatherId" value="0">
                                 <div class="col-md-12">
                                     <div class="form-group ui left labeled input">
                                         <label for="fatherFamilyName">Name of Company <span class="required_label">*</span></label>
-                                        <input name="street" type="text" class="form-control inputPayment" id="street"
+                                        <input type="text" class="form-control inputPayment companyName" id="companyName"
                                                 placeholder="Please fill in full name. eg: Tree Pte Ltd">
                                     </div>
                                     <div class="form-group">
                                         <label for="fatherFirstName">Billing Address<span class="required_label">*</span></label>
-                                        <input name="building" type="text" class="form-control inputPayment" id="building"
+                                        <input type="text" class="form-control inputPayment billingAddress" id="billingAddress"
                                                 placeholder="Please fill in full address. eg: 3 Orchard Road, 01-15 Orchard Tower, Singapore 123456">
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <input name="fatherId" type="hidden" id="fatherId" value="0">
+
                                 <div class="col-md-12">
                                     <div class="form-group ui left labeled input">
                                         <label for="fatherFamilyName">Attention to <span class="required_label">*</span></label>
-                                        <input name="street" type="text" class="form-control inputPayment" id="street"
+                                        <input type="text" class="form-control inputPayment attention" id="attention"
                                                 placeholder="eg: John">
                                     </div>
                                     <div class="form-group">
                                         <label for="fatherFirstName">Email Address<span class="required_label">*</span></label>
-                                        <input name="building" type="text" class="form-control inputPayment" id="building"
+                                        <input type="text" class="form-control inputPayment billingEmailAddress" id="billingEmailAddress"
                                                 placeholder="eg: example@gmail.com">
                                     </div>
                                 </div>
@@ -310,15 +348,14 @@
 
 
             {{-- Child/Children's Information --}}
-            <div class="card">
-                <div style="background-color: #6ab04c" class="card-header text-center">
+            <div class="card mt-5">
+                <div style="background-color: #006d29; color: #fff;" class="card-header">
                     Pick up/ Drop off Address (for Shuttle service riders, this will be your billing address)
                 </div>
                 <div class="card-body">
                     <div class="parent col-md-12 addMoreChild">
-                        <div class="row">
-                            <div class="col-md-8 child1">
-                                <input name="fatherId" type="hidden" id="fatherId" value="0">
+                        <div class="row child1">
+                            <div class="col-md-8">
                                 <div class="col-md-12">
                                     <div class="form-group ui left labeled input">
                                         <label for="fatherFamilyName">Family name <span class="required_label">*</span></label>
@@ -348,13 +385,13 @@
                                     <div class="d-flex">
                                         <label for="">Gender</label>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                                            <input class="form-check-input" value="male" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
                                             <label class="form-check-label" for="flexRadioDefault1">
                                               Male
                                             </label>
                                           </div>
                                           <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                                            <input class="form-check-input" value="fmale" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
                                             <label class="form-check-label" for="flexRadioDefault2">
                                               Famale
                                             </label>
@@ -371,73 +408,83 @@
                                                 placeholder="eg: dd/mm/yyyy">       
                                     </div>
 
-
-                                    {{-- checkbox route --}}
                                     <div class="form-group col-md-12 routeCheck">
                                         <strong>For Regular Bus Service:</strong><br>
                                         <label>&nbsp;&nbsp;Route <span class="required_label">*</span></label>
                                         <ul class="listRoute">
-                                            <label class="lable-radio"><input name="route[1]" type="radio" class="form-check-input routeCheckbox" value="2 Ways (Regular Bus Service)"> 2 Ways </label></br>
-                                            <label class="lable-radio"><input name="route[1]" type="radio" class="form-check-input routeCheckbox" value="1 Way (AM) (Regular Bus Service)"> 1 Way (AM) </label></br>
-                                            <label class="lable-radio"><input name="route[1]" type="radio" class="form-check-input routeCheckbox" value="1 Way (PM) (Regular Bus Service)"> 1 Way (PM) </label></br>
+                                            <label class="lable-radio"><input name="route[1]" type="radio" class="form-check-input routeCheckbox" value="1"> 2 Ways </label></br>
+                                            <label class="lable-radio"><input name="route[1]" type="radio" class="form-check-input routeCheckbox" value="2"> 1 Way (AM) </label></br>
+                                            <label class="lable-radio"><input name="route[1]" type="radio" class="form-check-input routeCheckbox" value="3"> 1 Way (PM) </label></br>
                                         </ul>
                                         <br>
                                         <strong>For Cairnhill 9 Shuttle Service (Shuttle bus fees apply):</strong><br>
                                         <label>&nbsp;&nbsp;Route <span class="required_label">*</span></label>
                                         <ul class="listRoute">
-                                            <label class="lable-radio"><input name="route[1]" type="radio" class="form-check-input routeCheckbox showModal" value="2 Ways (Cairnhill 9 Shuttle Service)"> 2 Ways </label></br>
-                                            <label class="lable-radio"><input name="route[1]" type="radio" class="form-check-input routeCheckbox showModal" value="1 Way (AM) (Cairnhill 9 Shuttle Service)"> 1 Way (AM) </label></br>
-                                            <label class="lable-radio"><input name="route[1]" type="radio" class="form-check-input routeCheckbox showModal" value="1 Way (PM) (Cairnhill 9 Shuttle Service)"> 1 Way (PM) </label></br>
+                                            <label class="lable-radio"><input name="route[1]" type="radio" class="form-check-input routeCheckbox showModal" value="4"> 2 Ways </label></br>
+                                            <label class="lable-radio"><input name="route[1]" type="radio" class="form-check-input routeCheckbox showModal" value="5"> 1 Way (AM) </label></br>
+                                            <label class="lable-radio"><input name="route[1]" type="radio" class="form-check-input routeCheckbox showModal" value="6"> 1 Way (PM) </label></br>
                                         </ul>
                                     </div>
-                                    <div class="show-error"></div>
-
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="resizer-demo">
+                                    <input type="file" class="input_file demo-img-1" hidden id="image">
+                                </div>
+                                <div>
+                                    <a class="btn btn-danger d-block mx-auto upload" style="background-color: #5bc0de; width: 100px; outline: none">Upload</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <a class="btn btn-success" id="addMore">Add more</a>
+                <a style="width:200px; display: block; margin: 20px auto; background-color: #3c3e3c;" class="btn btn-success" id="addMore">Add more</a>
             </div>
 
-            <div>
-                Please read the Terms and Conditions & Bus Regulations carefully. This forms an integral part of our agreement in respect to bus transportation for your child. By submitting this form, you confirm that you agree to the terms and conditions contained herein and undertake to take responsibility for your child's adherence to the same.
-                Applications must be received within the deadlines stipulated. Your application will take between 2 to 4 weeks to be processed. During high traffic periods, your application may take a little longer to be processed. You will be informed of the results of your application by email. Bus information will be sent to the email indicated by you to be the first point of contact. Please note that a seat for your child can only be confirmed when full payments has been received.
-                All students are required to purchase a beacon. The beacon is a security feature that allows us to ascertain your child’s location when he is a rider on the bus on the bus. The yearly subscription of $25 (before GST) will be charged to your child’s transport fares. Replacement beacons are charged at $25 (before GST) a piece. These beacons are non-transferable. Students on Shuttle buses do not need a beacon for travel.
-                Bus Details will be provided to you via email. Please ensure that the email addresses provided to us are valid and are readily accessible by you.
-                When using the School Bus Transport Service, the use of Child Safety Restraint (CSR)- (Ride Safer Vest) for all students up to Year 1 is strongly encouraged. Students who are less than 1.35 meters in height are recommended to use the approved Ride Safer Vest or Mifold booster seat (as per School Safety standard).
-                School approved CSR products are available and can be purchased directly from Taxi Baby :https://sg.taxibaby.com/
-                You can contact us at chatsworth@tongtar.com or approach the Transport Coordinator in school. Alternatively, you can also ring us at 6261 5537 during office hours (8.30am to 4.00pm) and ask to speak with the School Transport Team.
-            </div>
-            <div class="col-md-12 text-center">
-                <ul class="agreeTermContainer text-center">
-                    <div>
-                        <label class="text-center">
-                            <input type="checkbox" class="form-check-input" name="policy1"  value="1">
-                            I agree to the terms of service
-                        </label>
-                    </div>
+            <div class="text-policy">
+                <p>Please read the <a target="_blank" href="https://devapi-tttms.antk.co/cis/T&C-Chatsworth.pdf">Terms and Conditions & Bus Regulations</a> carefully. This forms an integral part of our agreement in respect to bus transportation for your child. By submitting this form, you confirm that you agree to the terms and conditions contained herein and undertake to take responsibility for your child's adherence to the same.</p>
+
+                <p>Applications must be received within the deadlines stipulated. Your application will take between 2 to 4 weeks to be processed. During high traffic periods, your application may take a little longer to be processed. You will be informed of the results of your application by email. Bus information will be sent to the email indicated by you to be the first point of contact. Please note that a seat for your child can only be confirmed when full payments has been received.</p>
+
+                <p>All students are required to purchase a beacon. The beacon is a security feature that allows us to ascertain your child’s location when he is a rider on the bus on the bus. The yearly subscription of $25 (before GST) will be charged to your child’s transport fares. Replacement beacons are charged at $25 (before GST) a piece. These beacons are non-transferable. Students on Shuttle buses do not need a beacon for travel.</p>
+
+                <p>Bus Details will be provided to you via email. Please ensure that the email addresses provided to us are valid and are readily accessible by you.</p>
+
+                <p>When using the School Bus Transport Service, the use of Child Safety Restraint (CSR)- (Ride Safer Vest) for all students up to Year 1 is strongly encouraged. Students who are less than 1.35 meters in height are recommended to use the approved Ride Safer Vest or Mifold booster seat (as per School Safety standard).</p>
+                
+                <p>School approved CSR products are available and can be purchased directly from Taxi Baby : <a target="_blank" href="https://sg.taxibaby.com/"></a>
+                    You can contact us at chatsworth@tongtar.com or approach the Transport Coordinator in school. Alternatively, you can also ring us at 6261 5537 during office hours (8.30am to 4.00pm) and ask to speak with the School Transport Team.</p>
+
+                <ul>
+                    <li style="list-style: none;" class="agreeTermContainer text-center">
+                        <div class="errorPolicy1">
+                            <label class="text-center">
+                                <input type="checkbox" class="form-check-input" name="policy1"  value="1">
+                                I agree to the <a target="_blank" href="https://devapi-tttms.antk.co/cis/T&C-Chatsworth.pdf">terms of service</a>
+                            </label>
+                            <div class=""></div>
+                        </div>
+                    </li>
+                    <li style="list-style: none;" class="text-center">
+                        <div class="errorPolicy2">
+                            <label>
+                                <input type="checkbox" class="form-check-input" name="policy2" value="1">
+                                I acknowledge that I have read and understood the <a target="_blank" href="https://devapi-tttms.antk.co/project/PDPA.pdf">Data Protection Notice</a> , and consent
+                                to the collection, use and disclosure of my personal data by Tong Tar Transport Service Pte Ltd for the purposes set out in the Notice.
+                            </label>
+                        </div>
+                    </li>
                 </ul>
-            </div>
-            <div class="col-md-8 col-md-offset-2 text-center" style="padding: unset;">
-                <ul class="text-center" style="padding: unset;">
-                    <div>
-                        <label class="text-center">
-                            <input type="checkbox" class="form-check-input" name="policy2" value="1">
-                            I acknowledge that I have read and understood the Data Protection Notice, and consent
-                            to the collection, use and disclosure of my personal data by Tong Tar Transport Service Pte Ltd for the purposes set out in the Notice.
-                        </label>
-                    </div>
-                </ul>
+                <a id="submit" class="btn btn-danger mt-5">Submit</a>
             </div>
 
-            <button id="submit" class="btn btn-danger d-block mx-auto mt-5" type="submit">Submit</button>
+
         </form>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js" integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.js" integrity="sha512-Gs+PsXsGkmr+15rqObPJbenQ2wB3qYvTHuJO6YJzPe/dTLvhy0fmae2BcnaozxDo5iaF8emzmCZWbQ1XXiX2Ig==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="{{asset('js/validate.js')}}"></script>
-
-
 </body>
 </html>

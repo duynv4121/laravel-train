@@ -51,6 +51,6 @@ Route::post('/destroyAll', [todoController::class, 'destroyAll']);
 
 Route::get('/validate', [registerController::class, 'index']);
 
-Route::post('/checkValidate', [registerController::class, 'check']);
+Route::post('/check', [registerController::class, 'check']);
 
 
