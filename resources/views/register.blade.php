@@ -382,14 +382,15 @@
                                         <input name="grade[1]" type="text" class="form-control grade"
                                                 placeholder="eg: 99985610001">
                                     </div>
-                                    <div class="d-flex">
-                                        <label for="">Gender</label>
+                                    <div class="d-flex mt-2 mb-2">
+                                        <label for="">Gender &nbsp;&nbsp;</label>
                                         <div class="form-check">
                                             <input class="form-check-input" value="male" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
                                             <label class="form-check-label" for="flexRadioDefault1">
                                               Male
                                             </label>
                                           </div>
+                                          &nbsp;&nbsp;
                                           <div class="form-check">
                                             <input class="form-check-input" value="fmale" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
                                             <label class="form-check-label" for="flexRadioDefault2">
@@ -428,7 +429,7 @@
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <div class="resizer-demo">
+                                <div class="upload-demo-wrap">
                                     <input type="file" class="input_file demo-img-1" hidden id="image">
                                 </div>
                                 <div>

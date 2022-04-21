@@ -471,12 +471,11 @@ if (radioCur == 'father') {
     }
 }
 
+
 var childIndex = 1;
 $('#addMore').on('click ', function() {
     addChild();
-    addUpload(childIndex);
 })
-
 
 function addChild() {
     childIndex++;
@@ -515,8 +514,8 @@ function addChild() {
                 </div>
             </div>
             <div class="col-md-4">
-                <i onclick="myFunction(this)" data-id=${childIndex} class="fa-solid fa-xmark"></i>
-                <div class="haha-${childIndex}">
+                <i onclick="myFunction(this)" data-id=${childIndex} class="fa-solid fa-xmark d-flex justify-content-end"></i>
+                <div class="haha-${childIndex} upload-demo-wrap-${childIndex}">
                     <input type="file" class="input_file-${childIndex} demo-img-${childIndex} changeImg" data-id="${childIndex}" hidden>
                 </div>
                 <div>
@@ -526,21 +525,12 @@ function addChild() {
         </div>
         `
     )
-}
-
-function loadImgDemo(items) {
-    var id = items.getAttribute('data-id');
-    $(".demo-img-" + id).click();
-
-    $('.demo-img-' + id).on('change', function() {
-        var id = items.getAttribute('data-id');
-        console.log(2342);
-    })
+    addUpload(childIndex);
 }
 
 
-function addUpload(item) {
-    var resize = $('.haha-' + item).croppie({
+function addUpload(value){
+    var resizeUpload =  $('.addMoreChild').find(".upload-demo-wrap-"+value).croppie({
         enableExif: true,
         enableOrientation: true,
         viewport: {
@@ -552,27 +542,40 @@ function addUpload(item) {
             height: 300
         }
     });
+    
+    
+    $('.input_file-'+value).on('change', function() {
+        preViewImg(this);
+    });
+
+    function preViewImg(input) {
+        var id = input.getAttribute('data-id');
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                resizeUpload.croppie('bind', {
+                    url: e.target.result
+                }),
+                resizeUpload.croppie('result', {
+                    type: 'base64',
+                  }).then(function (base) {
+                    console.log(base);
+                });
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
 }
 
 
+function loadImgDemo(items) {
+    var id = items.getAttribute('data-id');
+    $(".demo-img-" + id).click();
+}
 
 
-
-$('.input_file-').on('change', function() {
-    var reader = new FileReader();
-    reader.onload = function(e) {
-        resize.croppie('bind', {
-            url: e.target.result
-        })
-    }
-    reader.readAsDataURL(this.files[0]);
-});
-
-
-
-
-
-var resize = $('.resizer-demo').croppie({
+//upload default
+var resize =  $(".upload-demo-wrap").croppie({
     enableExif: true,
     enableOrientation: true,
     viewport: {
@@ -684,7 +687,6 @@ function sendAjax() {
         },
         'childInformation': dataFor
     }
-
 
 
     $.ajax({
