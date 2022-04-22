@@ -16,6 +16,8 @@ class registerController extends Controller
     public function check(Request $request)
     {
         $data = $request->all();
+
+        return $data;
         $count = count($data['dataAll']['childInformation']);
         $keyChildMax = max(array_keys($data['dataAll']['childInformation']));
 

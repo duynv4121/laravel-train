@@ -477,7 +477,7 @@ if (radioCur == 'father') {
 }
 
 
-var childIndex = 0;
+var childIndex = 1;
 $('#addMore').on('click ', function() {
     addChild();
 })
@@ -487,7 +487,7 @@ function addChild() {
     childIndex++;
     $(".addMoreChild").append(
         ` 
-        <div class="row child${childIndex}" style="margin-bottom:20px">
+        <div class="row child${childIndex}" style="margin-bottom:20px; margin-top:20px;">
             <hr>
             <div class="col-md-8">
                 <input name="fatherId" type="hidden" id="fatherId" value="0">
@@ -539,8 +539,8 @@ function addChild() {
                         <option value="2">Choose date</option>
                     </select>
 
-                    <div style="display:none" class="form-group date-select-${childIndex}">
-                        <input data-id="${childIndex}" name="date-choose[${childIndex}]" type="text" class="form-control date-choose-${childIndex} choose-calendar calendar-${childIndex}" onclick="onFocus(this)"
+                    <div style="display:none" class="mt-3 form-group date-select-${childIndex}">
+                        <input data-id="${childIndex}" name="date-choose[${childIndex}]" type="text" class="form-control date-choose-${childIndex} choose-calendar calendar-${childIndex}"
                                 placeholder="eg: dd/mm/yyyy">       
                     </div>
 
@@ -605,16 +605,11 @@ $(".choose-calendar").one('change', function() {
 })
 
 $(".choose-calendar").datepicker();
+$('.birthDay').datepicker();
 
 $(".close-btn-modal").click(function() {
     $(".modal-show-calendar").css("display", "none");
 })
-
-function onFocus(input) {
-    let id = input.getAttribute('data-id');
-    $(".calendar-" + id).datepicker();
-    console.log(123);
-}
 
 
 function addUpload(value) {
@@ -662,6 +657,10 @@ function addUpload(value) {
             reader.readAsDataURL(input.files[0]);
         }
     }
+
+
+    $('.birthDay').datepicker();
+    $('.choose-calendar').datepicker();
 }
 
 function loadImgDemo(items) {
@@ -785,6 +784,7 @@ function sendAjax() {
         'childInformation': dataFor
     }
 
+    console.log(dataFor);
 
     $.ajax({
         url: 'check',

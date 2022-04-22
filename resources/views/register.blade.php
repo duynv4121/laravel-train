@@ -39,7 +39,8 @@
         
     }
     .text-policy{
-        width: 900px;
+        max-width: 900px;
+        width: 100%;
         margin: 20px auto;
         text-align: justify;
         font-size: 14px;
@@ -405,7 +406,7 @@
                                         <option value="2">Choose date</option>
                                     </select>
 
-                                    <div style="display:none" class="form-group date-select-1">
+                                    <div style="display:none" class="mt-3 form-group date-select-1">
                                         <input name="date-choose[1]" type="text" class="form-control date-choose-1 choose-calendar"
                                                 placeholder="eg: dd/mm/yyyy">       
                                     </div>
