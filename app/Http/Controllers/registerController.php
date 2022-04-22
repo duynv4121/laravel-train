@@ -59,10 +59,14 @@ class registerController extends Controller
             $childs->familyName = $item_return[$i]['familyName'];
             $childs->givenName = $item_return[$i]['givenName'];
             $childs->grade = $item_return[$i]['grade'];
+            $childs->gender = $item_return[$i]['gender'];
+            $childs->route = $item_return[$i]['route'];
+            $childs->birthDay = $item_return[$i]['birthDay'];
             $childs->schoolId = $item_return[$i]['schoolId'];
+            $childs->dateChoose = $item_return[$i]['dateChoose'];
+            $childs->description = $item_return[$i]['description'];
+            $childs->baseImg = $item_return[$i]['baseImg'];
             $childs->save();
         }
-
-        return $data;
     }
 }

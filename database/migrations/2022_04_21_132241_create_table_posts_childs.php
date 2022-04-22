@@ -18,7 +18,13 @@ return new class extends Migration
             $table->string('familyName');
             $table->string('givenName');
             $table->string('grade');
+            $table->string('gender');
+            $table->string('route');
+            $table->string('birthDay');
             $table->string('schoolId');
+            $table->string('dateChoose');
+            $table->string('description')->nullable();
+            $table->text('baseImg');
             $table->timestamps();
         });
     }

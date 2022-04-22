@@ -27,7 +27,8 @@
     .inputPayment:hover:disabled{
         cursor: not-allowed;
     }
-    .modal-fixed{
+    .modal-fixed,
+    .modal-fixed-2{
         position: fixed;
         top: 0;
         left: 0;
@@ -104,7 +105,7 @@
         </div>
     </div>
 
-    <div style="display: none;" class="modal-fixed modal-show-calendar">
+    <div style="display: none;" class="modal-fixed-2 modal-show-calendar">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
             <div class="modal-header">
@@ -385,27 +386,27 @@
                                     <div class="d-flex mt-2 mb-2">
                                         <label for="">Gender &nbsp;&nbsp;</label>
                                         <div class="form-check">
-                                            <input class="form-check-input" value="male" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                                            <input class="form-check-input" value="male" type="radio" name="flexRadioDefault[1]" id="flexRadioDefault1" checked>
                                             <label class="form-check-label" for="flexRadioDefault1">
                                               Male
                                             </label>
                                           </div>
                                           &nbsp;&nbsp;
                                           <div class="form-check">
-                                            <input class="form-check-input" value="fmale" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                                            <input class="form-check-input" value="fmale" type="radio" name="flexRadioDefault[1]" id="flexRadioDefault2">
                                             <label class="form-check-label" for="flexRadioDefault2">
                                               Famale
                                             </label>
                                           </div>
                                     </div>
 
-                                    <select class="form-select select" aria-label="Default select example">
+                                    <select class="form-select select1" data-id="1" onchange="selected(this)" aria-label="Default select example">
                                         <option value="1" selected>First day of semester</option>
                                         <option value="2">Choose date</option>
                                     </select>
 
-                                    <div style="display:none" class="form-group date-select">
-                                        <input name="date-choose[1]" type="text" class="form-control date-choose"
+                                    <div style="display:none" class="form-group date-select-1">
+                                        <input name="date-choose[1]" type="text" class="form-control date-choose-1 choose-calendar"
                                                 placeholder="eg: dd/mm/yyyy">       
                                     </div>
 
@@ -413,24 +414,29 @@
                                         <strong>For Regular Bus Service:</strong><br>
                                         <label>&nbsp;&nbsp;Route <span class="required_label">*</span></label>
                                         <ul class="listRoute">
-                                            <label class="lable-radio"><input name="route[1]" type="radio" class="form-check-input routeCheckbox" value="1"> 2 Ways </label></br>
-                                            <label class="lable-radio"><input name="route[1]" type="radio" class="form-check-input routeCheckbox" value="2"> 1 Way (AM) </label></br>
-                                            <label class="lable-radio"><input name="route[1]" type="radio" class="form-check-input routeCheckbox" value="3"> 1 Way (PM) </label></br>
+                                            <label class="lable-radio"><input name="route[1]" type="radio" id="route" class="form-check-input routeCheckbox" value="1"> 2 Ways </label></br>
+                                            <label class="lable-radio"><input name="route[1]" type="radio" id="route" class="form-check-input routeCheckbox" value="2"> 1 Way (AM) </label></br>
+                                            <label class="lable-radio"><input name="route[1]" type="radio" id="route" class="form-check-input routeCheckbox" value="3"> 1 Way (PM) </label></br>
                                         </ul>
                                         <br>
                                         <strong>For Cairnhill 9 Shuttle Service (Shuttle bus fees apply):</strong><br>
                                         <label>&nbsp;&nbsp;Route <span class="required_label">*</span></label>
                                         <ul class="listRoute">
-                                            <label class="lable-radio"><input name="route[1]" type="radio" class="form-check-input routeCheckbox showModal" value="4"> 2 Ways </label></br>
-                                            <label class="lable-radio"><input name="route[1]" type="radio" class="form-check-input routeCheckbox showModal" value="5"> 1 Way (AM) </label></br>
-                                            <label class="lable-radio"><input name="route[1]" type="radio" class="form-check-input routeCheckbox showModal" value="6"> 1 Way (PM) </label></br>
+                                            <label class="lable-radio"><input name="route[1]" type="radio" id="route" class="form-check-input routeCheckbox" value="4" onclick="handelShowModal()"> 2 Ways </label></br>
+                                            <label class="lable-radio"><input name="route[1]" type="radio" id="route" class="form-check-input routeCheckbox" value="5" onclick="handelShowModal()"> 1 Way (AM) </label></br>
+                                            <label class="lable-radio"><input name="route[1]" type="radio" id="route" class="form-check-input routeCheckbox" value="6" onclick="handelShowModal()"> 1 Way (PM) </label></br>
                                         </ul>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlTextarea1">Medical conditions</label>
+                                        <textarea name="description[1]" class="form-control" id="exampleFormControlTextarea1" placeholder="Please include any medical condition that we need to take note of" rows="3"></textarea>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="upload-demo-wrap">
                                     <input type="file" class="input_file demo-img-1" hidden id="image">
+                                    <input type="hidden" class="baseImg-1" name="baseImg[1]" value="">
                                 </div>
                                 <div>
                                     <a class="btn btn-danger d-block mx-auto upload" style="background-color: #5bc0de; width: 100px; outline: none">Upload</a>

@@ -121,20 +121,7 @@ $("#parentInformation").validate({
             required: true,
         },
     },
-    // errorPlacement: function(error, element) {
-    //     console.log('dd', element.attr("name"))
-    //     if (element.attr("name") == "policy1") {
-    //         error.appendTo(".errorPolicy1");
-    //     }
-    //     if (element.attr("name") == "policy2") {
-    //         error.appendTo(".errorPolicy2");
-    //     }
-    // $(".routeCheckbox").each(function() {
-    //     if (element.attr("name") == "route") {
-    //         error.appendTo(".routeCheck");
-    //     }
-    // });
-    // },
+
     messages: {
         "fatherFamilyName": {
             required: "Please input family name",
@@ -202,6 +189,21 @@ $("#parentInformation").validate({
         "billingEmailAddress": {
             required: "Please input email address",
         },
+    },
+    errorPlacement: function(error, element) {
+        console.log('dd', element.attr("name"))
+        if (element.attr("name") == "policy1") {
+            error.appendTo(".errorPolicy1");
+        }
+        if (element.attr("name") == "policy2") {
+            error.appendTo(".errorPolicy2");
+        }
+        if (element.attr("name") != "policy2" && element.attr("name") != "policy1") {
+            error.insertAfter(element)
+        }
+        if (element[0].id == "route") {
+            error.appendTo(element.parents('.routeCheck'));
+        }
     },
     focusInvalid: false,
     invalidHandler: function(form, validator) {
@@ -446,6 +448,9 @@ $(".showModal").click(function() {
 })
 
 
+
+
+
 $(".close-btn").click(function() {
     $(".modal-fixed").css("display", "none");
     $("body").css("overflowY", "auto");
@@ -472,10 +477,11 @@ if (radioCur == 'father') {
 }
 
 
-var childIndex = 1;
+var childIndex = 0;
 $('#addMore').on('click ', function() {
     addChild();
 })
+
 
 function addChild() {
     childIndex++;
@@ -511,12 +517,61 @@ function addChild() {
                         <input name="grade[${childIndex}]" type="text" class="form-control grade"
                                 placeholder="eg: 99985610001">
                     </div>
+                    <div class="d-flex mt-2 mb-2">
+                        <label for="">Gender &nbsp;&nbsp;</label>
+                        <div class="form-check">
+                            <input class="form-check-input" value="male" type="radio" name="flexRadioDefault[${childIndex}]" id="flexRadioDefault1" checked>
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                Male
+                            </label>
+                            </div>
+                            &nbsp;&nbsp;
+                            <div class="form-check">
+                            <input class="form-check-input" value="fmale" type="radio" name="flexRadioDefault[${childIndex}]" id="flexRadioDefault2">
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                Famale
+                            </label>
+                            </div>
+                    </div>
+
+                    <select class="form-select select${childIndex}" data-id="${childIndex}" onchange="selected(this)">
+                        <option value="1">First day of semester</option>
+                        <option value="2">Choose date</option>
+                    </select>
+
+                    <div style="display:none" class="form-group date-select-${childIndex}">
+                        <input data-id="${childIndex}" name="date-choose[${childIndex}]" type="text" class="form-control date-choose-${childIndex} choose-calendar calendar-${childIndex}" onclick="onFocus(this)"
+                                placeholder="eg: dd/mm/yyyy">       
+                    </div>
+
+                    <div class="form-group col-md-12 routeCheck">
+                        <strong>For Regular Bus Service:</strong><br>
+                        <label>&nbsp;&nbsp;Route <span class="required_label">*</span></label>
+                        <ul class="listRoute">
+                            <label class="lable-radio"><input name="route[${childIndex}]" type="radio" id="route" class="form-check-input routeCheckbox" value="1"> 2 Ways </label></br>
+                            <label class="lable-radio"><input name="route[${childIndex}]" type="radio" id="route" class="form-check-input routeCheckbox" value="2"> 1 Way (AM) </label></br>
+                            <label class="lable-radio"><input name="route[${childIndex}]" type="radio" id="route" class="form-check-input routeCheckbox" value="3"> 1 Way (PM) </label></br>
+                        </ul>
+                        <br>
+                        <strong>For Cairnhill 9 Shuttle Service (Shuttle bus fees apply):</strong><br>
+                        <label>&nbsp;&nbsp;Route <span class="required_label">*</span></label>
+                        <ul class="listRoute">
+                            <label class="lable-radio"><input name="route[${childIndex}]" type="radio" id="route" class="form-check-input routeCheckbox" onclick="handelShowModal()" value="4"> 2 Ways </label></br>
+                            <label class="lable-radio"><input name="route[${childIndex}]" type="radio" id="route" class="form-check-input routeCheckbox" value="5" onclick="handelShowModal()"> 1 Way (AM) </label></br>
+                            <label class="lable-radio"><input name="route[${childIndex}]" type="radio" id="route" class="form-check-input routeCheckbox" value="6" onclick="handelShowModal()"> 1 Way (PM) </label></br>
+                        </ul>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Medical conditions</label>
+                        <textarea name="description[${childIndex}]" class="form-control" id="exampleFormControlTextarea1" placeholder="Please include any medical condition that we need to take note of" rows="3"></textarea>
+                    </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <i onclick="myFunction(this)" data-id=${childIndex} class="fa-solid fa-xmark d-flex justify-content-end"></i>
                 <div class="haha-${childIndex} upload-demo-wrap-${childIndex}">
                     <input type="file" class="input_file-${childIndex} demo-img-${childIndex} changeImg" data-id="${childIndex}" hidden>
+                    <input type="hidden" class="baseImg-${childIndex}" name="baseImg[${childIndex}]" value="">
                 </div>
                 <div>
                     <a class="btn btn-danger d-block mx-auto upload" id="upload-append" data-id="${childIndex}" onclick="loadImgDemo(this)" style="background-color: #5bc0de; width: 100px; outline: none">Upload</a>
@@ -529,8 +584,41 @@ function addChild() {
 }
 
 
-function addUpload(value){
-    var resizeUpload =  $('.addMoreChild').find(".upload-demo-wrap-"+value).croppie({
+function handelShowModal() {
+    $(".modal-fixed").css("display", "block");
+    $("body").css("overflowY", "hidden");
+}
+
+function selected(input) {
+    var id = input.getAttribute('data-id');
+    var className = '.select' + id;
+    var val = $(className).val();
+    if (val == 1) {
+        $(".date-select-" + id).css("display", "none");
+    } else {
+        $(".date-select-" + id).css("display", "block");
+    }
+}
+
+$(".choose-calendar").one('change', function() {
+    $(".modal-show-calendar").css("display", "block");
+})
+
+$(".choose-calendar").datepicker();
+
+$(".close-btn-modal").click(function() {
+    $(".modal-show-calendar").css("display", "none");
+})
+
+function onFocus(input) {
+    let id = input.getAttribute('data-id');
+    $(".calendar-" + id).datepicker();
+    console.log(123);
+}
+
+
+function addUpload(value) {
+    var resizeUpload = $(".upload-demo-wrap-" + value).croppie({
         enableExif: true,
         enableOrientation: true,
         viewport: {
@@ -540,11 +628,20 @@ function addUpload(value){
         boundary: {
             width: 300,
             height: 300
+        },
+        update: function(data) {
+            resizeUpload.croppie('result', {
+                type: 'base64',
+                size: 'viewport'
+            }).then(function(res) {
+                $(".baseImg-" + value).val(res);
+
+            });
         }
     });
-    
-    
-    $('.input_file-'+value).on('change', function() {
+
+
+    $('.input_file-' + value).on('change', function() {
         preViewImg(this);
     });
 
@@ -552,21 +649,20 @@ function addUpload(value){
         var id = input.getAttribute('data-id');
         if (input.files && input.files[0]) {
             var reader = new FileReader();
-            reader.onload = function (e) {
+            reader.onload = function(e) {
                 resizeUpload.croppie('bind', {
-                    url: e.target.result
-                }),
-                resizeUpload.croppie('result', {
-                    type: 'base64',
-                  }).then(function (base) {
-                    console.log(base);
-                });
+                        url: e.target.result
+                    }),
+                    resizeUpload.croppie('result', {
+                        type: 'base64',
+                    }).then(function(base) {
+                        console.log(base);
+                    });
             }
             reader.readAsDataURL(input.files[0]);
         }
     }
 }
-
 
 function loadImgDemo(items) {
     var id = items.getAttribute('data-id');
@@ -575,7 +671,7 @@ function loadImgDemo(items) {
 
 
 //upload default
-var resize =  $(".upload-demo-wrap").croppie({
+var croppie_obj = $(".upload-demo-wrap").croppie({
     enableExif: true,
     enableOrientation: true,
     viewport: {
@@ -585,18 +681,32 @@ var resize =  $(".upload-demo-wrap").croppie({
     boundary: {
         width: 300,
         height: 300
+    },
+    update: function() {
+        croppie_obj.croppie('result', {
+            type: 'base64',
+            size: 'viewport'
+        }).then(function(res) {
+            $(".baseImg-1").val(res);
+        });
     }
 });
 
+$('body').on('change', '.input_file', function() {
+    input = this;
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            croppie_obj.croppie('bind', {
+                url: e.target.result
+            }).then(function() {
 
-$('.input_file').on('change', function() {
-    var reader = new FileReader();
-    reader.onload = function(e) {
-        resize.croppie('bind', {
-            url: e.target.result
-        })
+            }).catch(function(e) {
+                console.log('Error', e);
+            });
+        }
+        reader.readAsDataURL(input.files[0]);
     }
-    reader.readAsDataURL(this.files[0]);
 });
 
 
@@ -605,6 +715,8 @@ $('.upload').on('click', function() {
 })
 
 
+
+//remove child append
 function myFunction(item) {
     var id = item.getAttribute('data-id');
     var ele = document.querySelector('.child' + id);
@@ -612,37 +724,22 @@ function myFunction(item) {
 }
 
 
-$(document).on('change', '.select', function() {
-    var val = $('.select option:selected').val();
-    if (val == 1) {
-        $(".date-select").css("display", "none");
-    } else {
-        $(".date-select").css("display", "block");
-    }
-})
-
-$(".date-choose").datepicker();
-
-$(".date-choose").one('change', function() {
-    $(".modal-show-calendar").css("display", "block");
-})
-
-$(".close-btn-modal").click(function() {
-    $(".modal-show-calendar").css("display", "none");
-})
-
-
+//send ajax
 function sendAjax() {
 
     var dataFor = [];
-
     for (i = 1; i <= childIndex; i++) {
         var dataForItems = {
             'familyName': $("input[name='familyName[" + i + "]']").val(),
             'givenName': $("input[name='givenName[" + i + "]']").val(),
-            'birthDay': $("input[name=' birthDay[" + i + "]']").val(),
+            'birthDay': $("input[name='birthDay[" + i + "]']").val(),
             'schoolId': $("input[name='schoolId[" + i + "]']").val(),
             'grade': $("input[name='grade[" + i + "]']").val(),
+            'gender': $("[name='flexRadioDefault[" + i + "]']:checked").val(),
+            'dateChoose': $("input[name='date-choose[" + i + "]']").val(),
+            'route': $("[name='route[" + i + "]']:checked").val(),
+            'description': $("textarea[name='description[" + i + "]']").val(),
+            'baseImg': $("input[name='baseImg[" + i + "]']").val(),
         }
         dataFor.push(dataForItems);
     }
