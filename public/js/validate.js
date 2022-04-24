@@ -561,6 +561,38 @@ function addChild() {
                             <label class="lable-radio"><input name="route[${childIndex}]" type="radio" id="route" class="form-check-input routeCheckbox" value="6" onclick="handelShowModal()"> 1 Way (PM) </label></br>
                         </ul>
                     </div>
+                    <div class="form-group col-md-12">
+                        <p>Remarks: Invoice will be sent to parents once bus seat can be confirmed. Transport charges
+                            are paid twice a year, before the start of each semester.</p>
+                    </div>
+                    <div class="form-group col-md-12" style="text-align: justify;">
+                        <strong><u>Shuttle Services:</u></strong>
+                        <div class="form-group col-md-12 custom-table" style="margin-top: 15px;">
+                            <table width="100%" style="border: solid 1px #ccc; font-size: 14px; text-align: center;">
+                                <thead style="background-color: #e2e2e2; color: #000000;">
+                                <tr>
+                                    <th style="text-align: center;">Shuttle Services</th>
+                                    <th style="text-align: center;">Estimated Departure Time</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td><u>Morning</u><br>From Cairnhill 9</td>
+                                    <td>8:00 am</td>
+                                </tr>
+                                <tr>
+                                    <td><u>Afternoon</u><br>From School</td>
+                                    <td>3:45 pm</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <strong style="font-size: 14px;">
+                            <p>Please be at the pick up point 10 minutes before the estimated departure time. For afternoon arrivals, please note that there is a no waiting policy for the shuttle buses.</p>
+                            <p>Parents who wish to ensure that their child will be accompanied when they alight from the bus must ensure that they are present and waiting before the bus arrives.
+                                The Shuttle buses will not wait for parents to pick up their children.</p>
+                        </strong>
+                    </div>
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">Medical conditions</label>
                         <textarea name="description[${childIndex}]" class="form-control" id="exampleFormControlTextarea1" placeholder="Please include any medical condition that we need to take note of" rows="3"></textarea>
