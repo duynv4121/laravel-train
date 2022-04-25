@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('parents', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->string('father_family_name')->nullable();
             $table->string('father_first_name')->nullable();
             $table->string('father_mobile_phone')->nullable();
@@ -49,3 +49,5 @@ return new class extends Migration
         Schema::dropIfExists('parents');
     }
 };
+
+

@@ -13,8 +13,9 @@ class parents extends Model
     protected $primarykey = 'id';
     public $timestamps = true;
 
-    public function phone()
+
+    public function payments()
     {
-        return $this->hasOne(payment::class, 'parent_id');
+        return $this->hasOne(App\Models\payments::class, 'id_parent', 'id');
     }
 }

@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('payment', function (Blueprint $table) {
-            $table->id();
-            $table->string('parent_id');
+            $table->increments('id');
+            $table->integer('id_parent')->unsigned();
             $table->string('detail_below')->nullable();
             $table->string('payment_bill')->nullable();
             $table->string('attention')->nullable();
@@ -23,6 +23,8 @@ return new class extends Migration
             $table->string('billing_email_address')->nullable();
             $table->string('company_name')->nullable();
             $table->timestamps();
+
+            $table->foreign('id_parent')->references('id')->on('parents');
         });
     }
 

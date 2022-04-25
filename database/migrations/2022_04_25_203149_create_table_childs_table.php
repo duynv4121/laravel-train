@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('childs', function (Blueprint $table) {
-            $table->id();
-            $table->string('id_parent');
+            $table->increments('id');
+            $table->integer('id_parent')->unsigned();
             $table->string('family_name');
             $table->string('given_name');
             $table->text('grade');
@@ -29,7 +29,7 @@ return new class extends Migration
             $table->text('base_img');
             $table->timestamps();
 
-            $table->foreign('id_parent')->references('id')->on('parents');
+            $table->foreign('id_parent')->references('id')->on('parents')->onDelete('cascade');
         });
     }
 
