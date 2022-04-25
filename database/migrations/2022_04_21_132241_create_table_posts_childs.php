@@ -15,17 +15,21 @@ return new class extends Migration
     {
         Schema::create('childs', function (Blueprint $table) {
             $table->id();
-            $table->string('familyName');
-            $table->string('givenName');
-            $table->string('grade');
+            $table->string('id_parent');
+            $table->string('family_name');
+            $table->string('given_name');
+            $table->text('grade');
             $table->string('gender');
             $table->string('route');
-            $table->string('birthDay');
-            $table->string('schoolId');
-            $table->string('dateChoose');
+            $table->string('birth_day');
+            $table->string('school_id');
+            $table->string('select_type');
+            $table->string('date_choose');
             $table->string('description')->nullable();
-            $table->text('baseImg');
+            $table->text('base_img');
             $table->timestamps();
+
+            $table->foreign('id_parent')->references('id')->on('parents');
         });
     }
 

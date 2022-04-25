@@ -139,28 +139,28 @@
                             <div class="col-md-12">
                                 <div class="form-group ui left labeled input">
                                     <label for="fatherFamilyName">Family Name <span class="required_label">*</span></label>
-                                    <input name="fatherFamilyName" type="text" class="form-control" id="fatherFamilyName"
+                                    <input name="fatherFamilyName" type="text" value="{{$parents->father_family_name}}" class="form-control" id="fatherFamilyName"
                                             placeholder="eg: Waston">
                                          
                                 </div>
                                 <div class="form-group">
                                     <label for="fatherFirstName">First Name <span class="required_label">*</span></label>
-                                    <input name="fatherFirstName" type="text" class="form-control" id="fatherFirstName"
+                                    <input name="fatherFirstName" type="text" value="{{$parents->father_first_name}}"class="form-control" id="fatherFirstName"
                                             placeholder="eg: John">
                                 </div>
                                 <div class="form-group">
                                     <label for="fatherMobilePhone">Mobile Phone (+65) <span class="required_label">*</span></label>
-                                    <input name="fatherMobilePhone" type="text" class="form-control" id="fatherMobilePhone"
+                                    <input name="fatherMobilePhone" type="text" value="{{$parents->father_mobile_phone}} "class="form-control" id="fatherMobilePhone"
                                             placeholder="eg: 9876 5883">
                                 </div>
                                 <div class="form-group">
                                     <label for="fatherOfficePhone">Office Phone (+65)</label>
-                                    <input name="fatherOfficePhone" type="text" class="form-control" id="fatherOfficePhone"
+                                    <input name="fatherOfficePhone" type="text" value="{{$parents->father_office_phone}} "class="form-control" id="fatherOfficePhone"
                                             placeholder="eg: 6273 8885 / 9876 5484">
                                 </div>
                                 <div class="form-group">
                                     <label for="fatherEmailAddress">Email Address <span class="required_label">*</span></label>
-                                    <input name="fatherEmailAddress" type="email" class="form-control"
+                                    <input name="fatherEmailAddress" type="email" value="{{$parents->father_email_address}} "class="form-control"
                                             id="fatherEmailAddress" placeholder="eg: example@gmail.com">
                                 </div>
                             </div>
@@ -170,28 +170,28 @@
                             <div class="col-md-12">
                                 <div class="form-group ui left labeled input">
                                     <label for="motherFamilyName">Family Name <span class="required_label">*</span></label>
-                                    <input type="text" class="form-control" id="motherFamilyName"
+                                    <input type="text" value="{{$parents->mother_family_name}}" class="form-control" id="motherFamilyName"
                                             placeholder="eg: Waston">
                                          
                                 </div>
                                 <div class="form-group">
                                     <label for="motherFirstName">First Name <span class="required_label">*</span></label>
-                                    <input type="text" class="form-control" id="motherFirstName"
+                                    <input type="text" class="form-control" value="{{$parents->mother_first_name}}" id="motherFirstName"
                                             placeholder="eg: John">
                                 </div>
                                 <div class="form-group">
                                     <label for="motherMobilePhone">Mobile Phone (+65) <span class="required_label">*</span></label>
-                                    <input type="text" class="form-control" id="motherMobilePhone"
+                                    <input type="text" class="form-control" value="{{$parents->mother_mobile_phone}}" id="motherMobilePhone"
                                             placeholder="eg: 9876 5883">
                                 </div>
                                 <div class="form-group">
                                     <label for="motherOfficePhone">Office Phone (+65)</label>
-                                    <input type="text" class="form-control" id="motherOfficePhone"
+                                    <input type="text" class="form-control" value="{{$parents->mother_office_phone}}" id="motherOfficePhone"
                                             placeholder="eg: 6273 8885 / 9876 5484">
                                 </div>
                                 <div class="form-group">
                                     <label for="motherEmailAddress">Email Address <span class="required_label">*</span></label>
-                                    <input type="email" class="form-control"
+                                    <input type="email"  value="{{$parents->mother_email_address}}"  class="form-control"
                                             id="motherEmailAddress" placeholder="eg: example@gmail.com">
                                 </div>
                             </div>
@@ -201,29 +201,29 @@
                             <div class="col-md-12">
                                 <div class="form-group ui left labeled input">
                                     <label for="guardianFamilyName">Family Name <span class="required_label">*</span></label>
-                                    <input type="text" class="form-control" id="guardianFamilyName"
+                                    <input type="text" class="form-control" value="{{$parents->guardian_family_name}}" id="guardianFamilyName"
                                             placeholder="eg: Waston">
                                          
                                 </div>
                                 <div class="form-group">
                                     <label for="guardianFirstName">First Name <span class="required_label">*</span></label>
-                                    <input type="text" class="form-control" id="guardianFirstName"
+                                    <input type="text" class="form-control" value="{{$parents->guardian_first_name}}"  id="guardianFirstName"
                                             placeholder="eg: John">
                                 </div>
                                 <div class="form-group">
                                     <label for="guardianMobilePhone">Mobile Phone (+65) <span class="required_label">*</span></label>
-                                    <input type="text" class="form-control" id="guardianMobilePhone"
+                                    <input type="text" class="form-control" value="{{$parents->guardian_mobile_phone}}"  id="guardianMobilePhone"
                                             placeholder="eg: 9876 5883">
                                 </div>
                                 <div class="form-group">
                                     <label for="guardianOfficePhone">Office Phone (+65)</label>
-                                    <input type="text" class="form-control" id="guardianOfficePhone"
+                                    <input type="text" class="form-control" value="{{$parents->guardian_office_phone}}" id="guardianOfficePhone"
                                             placeholder="eg: 6273 8885 / 9876 5484">
                                 </div>
                                 <div class="form-group">
                                     <label for="guardianEmailAddress">Email Address <span class="required_label">*</span></label>
                                     <input type="email" class="form-control"
-                                            id="guardianEmailAddress" placeholder="eg: example@gmail.com">
+                                            id="guardianEmailAddress" value="{{$parents->guardian_email_address}}"  placeholder="eg: example@gmail.com">
                                 </div>
                             </div>
                         </div>
@@ -234,9 +234,9 @@
                                 include emergencies:</p>
                             <ul class="peopleContactRadioContainer text-center">
                                 <div class="text-center">
-                                    <label><input name="peopleContact" type="radio" class="form-check-input" id="father" value="father" checked> Father</label>
-                                    <label class="padding-left-15"><input name="peopleContact" type="radio" class="form-check-input" id="mother" value="mother"> Mother</label>
-                                    <label class="padding-left-15"><input name="peopleContact" type="radio" class="form-check-input" id="guardian" value="guardian"> Guardian</label>
+                                    <label><input name="peopleContact" type="radio" class="form-check-input" id="father" value="father" @if ($parents->people_contact=='father') checked @endif> Father</label>
+                                    <label class="padding-left-15"><input name="peopleContact" type="radio" class="form-check-input" id="mother"  @if ($parents->people_contact=='mother') checked @endif value="mother"> Mother</label>
+                                    <label class="padding-left-15"><input name="peopleContact" type="radio" class="form-check-input" id="guardian"  @if ($parents->people_contact=='guardian') checked @endif value="guardian"> Guardian</label>
                                 </div>
                             </ul>
                         </div>
@@ -256,12 +256,12 @@
                             <div class="col-md-12">
                                 <div class="form-group ui left labeled input">
                                     <label for="fatherFamilyName">Block/ House Number<span class="required_label">*</span></label>
-                                    <input name="block" type="text" class="form-control" id="block"
+                                    <input name="block" type="text" value="{{$parents->block}}" class="form-control" id="block"
                                             placeholder="eg: 123 / 123B">
                                 </div>
                                 <div class="form-group">
                                     <label for="fatherFirstName">Unit Number <span class="required_label">*</span></label>
-                                    <input name="unit" type="text" class="form-control" id="unit"
+                                    <input name="unit" type="text" value="{{$parents->unit}}" class="form-control" id="unit"
                                             placeholder="eg: 01-15">
                                 </div>
                             </div>
@@ -270,12 +270,12 @@
                             <div class="col-md-12">
                                 <div class="form-group ui left labeled input">
                                     <label for="fatherFamilyName">Street Name <span class="required_label">*</span></label>
-                                    <input name="street" type="text" class="form-control" id="street"
+                                    <input name="street" type="text" value="{{$parents->street}}" class="form-control" id="street"
                                             placeholder="eg: Orchard Road">
                                 </div>
                                 <div class="form-group">
                                     <label for="fatherFirstName">Name of Building / Condominium<span class="required_label">*</span></label>
-                                    <input name="building" type="text" class="form-control" id="building"
+                                    <input name="building" type="text" value="{{$parents->building}}" class="form-control" id="building"
                                             placeholder="eg: Orchard Tower">
                                 </div>
                             </div>
@@ -284,7 +284,7 @@
                             <div class="col-md-12">
                                 <div class="form-group ui left labeled input">
                                     <label for="fatherFamilyName">Postal Code  <span class="required_label">*</span></label>
-                                    <input name="postalCode" type="text" class="form-control" id="postalCode"
+                                    <input name="postalCode" type="text" value="{{$parents->postal_code}}" class="form-control" id="postalCode"
                                             placeholder="eg: 123456">
                                 </div>
                             </div>
@@ -304,16 +304,16 @@
                     <div class="parent col-md-12 row">
                         <div class="col-md-12">
                             <div class="col-md-3">
-                                <input type="checkbox" class="form-check-input" name="detailBelow" id="detailBelow" value="1">
+                                <input type="checkbox" @if ($parents->detail_below == '1') checked @endif class="form-check-input" name="detailBelow" id="detailBelow" value="1">
                                 Same as above
                             </div>
                             <div class="col-md-6 mx-auto">
                                 <p for="" class="text-center text-bold">Please tick the appropriate box regarding payment: </p>
                                 <ul class="paymentCheckboxContainer text-center">
                                     <div class="text-center">
-                                        <label><input type="radio" class="form-check-input" name="paymentCheck" id="paymentCheck" value="father" checked> Father</label>
-                                        <label class="padding-left-15"><input type="radio" class="form-check-input" name="paymentCheck" id="paymentCheck" value="mother"> Mother</label>
-                                        <label class="padding-left-15"><input type="radio" class="form-check-input" name="paymentCheck" id="paymentCheck" value="other"> Details below</label>
+                                        <label><input type="radio" class="form-check-input" name="paymentCheck" id="paymentCheck" value="father" @if ($parents->payment_bill=='father') checked @endif> Father</label>
+                                        <label class="padding-left-15"><input type="radio" class="form-check-input" name="paymentCheck" id="paymentCheck" value="mother"@if ($parents->payment_bill=='mother') checked @endif> Mother</label>
+                                        <label class="padding-left-15"><input type="radio" class="form-check-input" name="paymentCheck" id="paymentCheck" value="other" @if ($parents->payment_bill=='other') checked @endif> Details below</label>
                                     </div>
                                 </ul>
                             </div>
@@ -322,13 +322,13 @@
                             <div class="col-md-6">
                                 <div class="col-md-12">
                                     <div class="form-group ui left labeled input">
-                                        <label for="fatherFamilyName">Name of Company <span class="required_label">*</span></label>
-                                        <input type="text" class="form-control inputPayment companyName" id="companyName"
+                                        <label for="">Name of Company <span class="required_label">*</span></label>
+                                        <input type="text" value="{{$parents->company_name}}" class="form-control inputPayment companyName" id="companyName"
                                                 placeholder="Please fill in full name. eg: Tree Pte Ltd">
                                     </div>
                                     <div class="form-group">
-                                        <label for="fatherFirstName">Billing Address<span class="required_label">*</span></label>
-                                        <input type="text" class="form-control inputPayment billingAddress" id="billingAddress"
+                                        <label for="">Billing Address<span class="required_label">*</span></label>
+                                        <input type="text" value="{{$parents->building_address}}" class="form-control inputPayment billingAddress" id="billingAddress"
                                                 placeholder="Please fill in full address. eg: 3 Orchard Road, 01-15 Orchard Tower, Singapore 123456">
                                     </div>
                                 </div>
@@ -337,13 +337,13 @@
 
                                 <div class="col-md-12">
                                     <div class="form-group ui left labeled input">
-                                        <label for="fatherFamilyName">Attention to <span class="required_label">*</span></label>
-                                        <input type="text" class="form-control inputPayment attention" id="attention"
+                                        <label for="">Attention to <span class="required_label">*</span></label>
+                                        <input type="text" value="{{$parents->attention}}" class="form-control inputPayment attention" id="attention"
                                                 placeholder="eg: John">
                                     </div>
                                     <div class="form-group">
-                                        <label for="fatherFirstName">Email Address<span class="required_label">*</span></label>
-                                        <input type="text" class="form-control inputPayment billingEmailAddress" id="billingEmailAddress"
+                                        <label for="">Email Address<span class="required_label">*</span></label>
+                                        <input type="text" value="{{$parents->billing_email_address}}" class="form-control inputPayment billingEmailAddress" id="billingEmailAddress"
                                                 placeholder="eg: example@gmail.com">
                                     </div>
                                 </div>
@@ -361,126 +361,131 @@
                 </div>
                 <div class="card-body">
                     <div class="parent col-md-12 addMoreChild">
-                        <div class="row child1">
-                            <div class="col-md-8">
-                                <div class="col-md-12">
-                                    <div class="form-group ui left labeled input">
-                                        <label for="fatherFamilyName">Family name <span class="required_label">*</span></label>
-                                        <input type="text" name="familyName[1]" class="form-control familyName"
-                                                placeholder="eg: Waston">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="fatherFirstName">Given name <span class="required_label">*</span></label>
-                                        <input name="givenName[1]" type="text" class="form-control givenName"
-                                                placeholder="eg: Alice">       
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="fatherFirstName">Date of Birth <span class="required_label">*</span></label>
-                                        <input name="birthDay[1]" type="text" class="form-control birthDay"
-                                                placeholder="eg: dd/mm/yyyy">       
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="fatherFirstName">Student ID <span class="required_label">*</span></label>
-                                        <input name="schoolId[1]" type="text" class="form-control schoolId" id="unit"
-                                                placeholder="eg: G1">                            
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="fatherFirstName">Grade <span class="required_label">*</span></label>
-                                        <input name="grade[1]" type="text" class="form-control grade"
-                                                placeholder="eg: 99985610001">
-                                    </div>
-                                    <div class="d-flex mt-2 mb-2">
-                                        <label for="">Gender &nbsp;&nbsp;</label>
-                                        <div class="form-check">
-                                            <input class="form-check-input" value="male" type="radio" name="flexRadioDefault[1]" id="flexRadioDefault1" checked>
-                                            <label class="form-check-label" for="flexRadioDefault1">
-                                              Male
-                                            </label>
-                                          </div>
-                                          &nbsp;&nbsp;
-                                          <div class="form-check">
-                                            <input class="form-check-input" value="female" type="radio" name="flexRadioDefault[1]" id="flexRadioDefault2">
-                                            <label class="form-check-label" for="flexRadioDefault2">
-                                              Famale
-                                            </label>
-                                          </div>
-                                    </div>
-
-                                    <select class="form-select select1" name="selectType[1]" data-id="1" onchange="selected(this)" aria-label="Default select example">
-                                        <option value="First day of semester" selected>First day of semester</option>
-                                        <option value="date">Choose date</option>
-                                    </select>
-
-                                    <div style="display:none" class="mt-3 form-group date-select-1">
-                                        <input name="date-choose[1]" type="text" class="form-control date-choose-1 choose-calendar"
-                                                placeholder="eg: dd/mm/yyyy">       
-                                    </div>
-
-                                    <div class="form-group col-md-12 routeCheck">
-                                        <strong>For Regular Bus Service:</strong><br>
-                                        <label>&nbsp;&nbsp;Route <span class="required_label">*</span></label>
-                                        <ul class="listRoute">
-                                            <label class="lable-radio"><input name="route[1]" type="radio" id="route" class="form-check-input routeCheckbox" value="2 Ways (Regular Bus Service)"> 2 Ways </label></br>
-                                            <label class="lable-radio"><input name="route[1]" type="radio" id="route" class="form-check-input routeCheckbox" value="1 Way (AM) (Regular Bus Service)"> 1 Way (AM) </label></br>
-                                            <label class="lable-radio"><input name="route[1]" type="radio" id="route" class="form-check-input routeCheckbox" value="1 Way (PM) (Regular Bus Service)"> 1 Way (PM) </label></br>
-                                        </ul>
-                                        <br>
-                                        <strong>For Cairnhill 9 Shuttle Service (Shuttle bus fees apply):</strong><br>
-                                        <label>&nbsp;&nbsp;Route <span class="required_label">*</span></label>
-                                        <ul class="listRoute">
-                                            <label class="lable-radio"><input name="route[1]" type="radio" id="route" class="form-check-input routeCheckbox" value="2 Ways (Cairnhill 9 Shuttle Service)" onclick="handelShowModal()"> 2 Ways </label></br>
-                                            <label class="lable-radio"><input name="route[1]" type="radio" id="route" class="form-check-input routeCheckbox" value="1 Way (AM) (Cairnhill 9 Shuttle Service)" onclick="handelShowModal()"> 1 Way (AM) </label></br>
-                                            <label class="lable-radio"><input name="route[1]" type="radio" id="route" class="form-check-input routeCheckbox" value="1 Way (PM) (Cairnhill 9 Shuttle Service)" onclick="handelShowModal()"> 1 Way (PM) </label></br>
-                                        </ul>
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <p>Remarks: Invoice will be sent to parents once bus seat can be confirmed. Transport charges
-                                            are paid twice a year, before the start of each semester.</p>
-                                    </div>
-                                    <div class="form-group col-md-12" style="text-align: justify;">
-                                        <strong><u>Shuttle Services:</u></strong>
-                                        <div class="form-group col-md-12 custom-table" style="margin-top: 15px;">
-                                            <table width="100%" style="border: solid 1px; font-size: 14px; line-height: 1.5; text-align: center;" class="shuttle-price">
-                                                <thead style="background-color: #e2e2e2; color: #000000;">
-                                                <tr>
-                                                    <th style="text-align: center;">Shuttle Services</th>
-                                                    <th style="text-align: center;">Estimated Departure Time</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                <tr>
-                                                    <td><u>Morning</u><br>From Cairnhill 9</td>
-                                                    <td>8:00 am</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><u>Afternoon</u><br>From School</td>
-                                                    <td>3:45 pm</td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
+                        @php
+                            $i = 0
+                        @endphp
+                        @foreach ($child as $val)
+                            <div class="row child1">
+                                <div class="col-md-8">
+                                    <div class="col-md-12">
+                                        <div class="form-group ui left labeled input">
+                                            <label for="fatherFamilyName">Family name <span class="required_label">*</span></label>
+                                            <input type="text" name="familyName[1]" class="form-control familyName"
+                                                    placeholder="eg: Waston" value="{{$val['family_name']}}" >
                                         </div>
-                                        <strong style="font-size: 14px;">
-                                            <p>Please be at the pick up point 10 minutes before the estimated departure time. For afternoon arrivals, please note that there is a no waiting policy for the shuttle buses.</p>
-                                            <p>Parents who wish to ensure that their child will be accompanied when they alight from the bus must ensure that they are present and waiting before the bus arrives.
-                                                The Shuttle buses will not wait for parents to pick up their children.</p>
-                                        </strong>
+                                        <div class="form-group">
+                                            <label for="fatherFirstName">Given name <span class="required_label">*</span></label>
+                                            <input name="givenName[1]" type="text"class="form-control givenName"
+                                                    placeholder="eg: Alice" value="{{$val['given_name']}}" >       
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="fatherFirstName">Date of Birth <span class="required_label">*</span></label>
+                                            <input name="birthDay[1]" type="text" class="form-control givenName" class="form-control birthDay"
+                                                    placeholder="eg: dd/mm/yyyy" value="{{$val['birth_day']}}" >       
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="fatherFirstName">Student ID <span class="required_label">*</span></label>
+                                            <input name="schoolId[1]" type="text" class="form-control schoolId" id="unit"
+                                                    placeholder="eg: G1" value="{{$val['school_id']}}">                            
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="fatherFirstName">Grade <span class="required_label">*</span></label>
+                                            <input name="grade[1]" type="text" class="form-control grade"
+                                                    placeholder="eg: 99985610001"  value="{{$val['grade']}}">
+                                        </div>
+                                        <div class="d-flex mt-2 mb-2">
+                                            <label for="">Gender &nbsp;&nbsp;</label>
+                                            <div class="form-check">
+                                                <input class="form-check-input" value="male" @if ($val['gender']=='male') checked @endif type="radio" name="flexRadioDefault[1]" id="flexRadioDefault1">
+                                                <label class="form-check-label" for="flexRadioDefault1">
+                                                Male
+                                                </label>
+                                            </div>
+                                            &nbsp;&nbsp;
+                                            <div class="form-check">
+                                                <input class="form-check-input" value="female" type="radio" name="flexRadioDefault[1]" id="flexRadioDefault2" @if ($val['gender']=='famele') checked @endif>
+                                                <label class="form-check-label" for="flexRadioDefault2">
+                                                Famale
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <select class="form-select select1" name="selectType[1]" data-id="1" onchange="selected(this)" aria-label="Default select example">
+                                            <option value="First day of semester" selected>First day of semester</option>
+                                            <option value="date">Choose date</option>
+                                        </select>
+
+                                        <div style="display:none" class="mt-3 form-group date-select-1">
+                                            <input name="date-choose[1]" type="text" class="form-control date-choose-1 choose-calendar"
+                                                    placeholder="eg: dd/mm/yyyy">       
+                                        </div>
+
+                                        <div class="form-group col-md-12 routeCheck">
+                                            <strong>For Regular Bus Service:</strong><br>
+                                            <label>&nbsp;&nbsp;Route <span class="required_label">*</span></label>
+                                            <ul class="listRoute">
+                                                <label class="lable-radio"><input name="route[1]" type="radio" id="route" class="form-check-input routeCheckbox" value="2 Ways (Regular Bus Service)"> 2 Ways </label></br>
+                                                <label class="lable-radio"><input name="route[1]" type="radio" id="route" class="form-check-input routeCheckbox" value="1 Way (AM) (Regular Bus Service)"> 1 Way (AM) </label></br>
+                                                <label class="lable-radio"><input name="route[1]" type="radio" id="route" class="form-check-input routeCheckbox" value="1 Way (PM) (Regular Bus Service)"> 1 Way (PM) </label></br>
+                                            </ul>
+                                            <br>
+                                            <strong>For Cairnhill 9 Shuttle Service (Shuttle bus fees apply):</strong><br>
+                                            <label>&nbsp;&nbsp;Route <span class="required_label">*</span></label>
+                                            <ul class="listRoute">
+                                                <label class="lable-radio"><input name="route[1]" type="radio" id="route" class="form-check-input routeCheckbox" value="2 Ways (Cairnhill 9 Shuttle Service)" onclick="handelShowModal()"> 2 Ways </label></br>
+                                                <label class="lable-radio"><input name="route[1]" type="radio" id="route" class="form-check-input routeCheckbox" value="1 Way (AM) (Cairnhill 9 Shuttle Service)" onclick="handelShowModal()"> 1 Way (AM) </label></br>
+                                                <label class="lable-radio"><input name="route[1]" type="radio" id="route" class="form-check-input routeCheckbox" value="1 Way (PM) (Cairnhill 9 Shuttle Service)" onclick="handelShowModal()"> 1 Way (PM) </label></br>
+                                            </ul>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <p>Remarks: Invoice will be sent to parents once bus seat can be confirmed. Transport charges are paid twice a year, before the start of each semester.</p>
+                                        </div>
+                                        <div class="form-group col-md-12" style="text-align: justify;">
+                                            <strong><u>Shuttle Services:</u></strong>
+                                            <div class="form-group col-md-12 custom-table" style="margin-top: 15px;">
+                                                <table width="100%" style="border: solid 1px; font-size: 14px; line-height: 1.5; text-align: center;" class="shuttle-price">
+                                                    <thead style="background-color: #e2e2e2; color: #000000;">
+                                                    <tr>
+                                                        <th style="text-align: center;">Shuttle Services</th>
+                                                        <th style="text-align: center;">Estimated Departure Time</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr>
+                                                        <td><u>Morning</u><br>From Cairnhill 9</td>
+                                                        <td>8:00 am</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><u>Afternoon</u><br>From School</td>
+                                                        <td>3:45 pm</td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <strong style="font-size: 14px;">
+                                                <p>Please be at the pick up point 10 minutes before the estimated departure time. For afternoon arrivals, please note that there is a no waiting policy for the shuttle buses.</p>
+                                                <p>Parents who wish to ensure that their child will be accompanied when they alight from the bus must ensure that they are present and waiting before the bus arrives.
+                                                    The Shuttle buses will not wait for parents to pick up their children.</p>
+                                            </strong>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleFormControlTextarea1">Medical conditions</label>
+                                            <textarea name="description[1]" class="form-control" id="exampleFormControlTextarea1" placeholder="Please include any medical condition that we need to take note of" rows="3"></textarea>
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="exampleFormControlTextarea1">Medical conditions</label>
-                                        <textarea name="description[1]" class="form-control" id="exampleFormControlTextarea1" placeholder="Please include any medical condition that we need to take note of" rows="3"></textarea>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="upload-demo-wrap">
+                                        <input type="file" class="input_file demo-img-1" hidden id="image">
+                                        <input type="hidden" class="baseImg-1" name="baseImg[1]" value="">
+                                        <canvas id="canvas" width="5" height="5"></canvas>
+                                    </div>
+                                    <div>
+                                        <a class="btn btn-danger d-block mx-auto upload" style="background-color: #5bc0de; width: 100px; outline: none">Upload</a>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="upload-demo-wrap">
-                                    <input type="file" class="input_file demo-img-1" hidden id="image">
-                                    <input type="hidden" class="baseImg-1" name="baseImg[1]" value="">
-                                </div>
-                                <div>
-                                    <a class="btn btn-danger d-block mx-auto upload" style="background-color: #5bc0de; width: 100px; outline: none">Upload</a>
-                                </div>
-                            </div>
-                        </div>
+                            </div>  
+                        @endforeach
                     </div>
                 </div>
                 <a style="width:200px; display: block; margin: 20px auto; background-color: #3c3e3c;" class="btn btn-success" id="addMore">Add more</a>

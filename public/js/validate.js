@@ -534,9 +534,9 @@ function addChild() {
                             </div>
                     </div>
 
-                    <select class="form-select select${childIndex}" data-id="${childIndex}" onchange="selected(this)">
-                        <option value="1">First day of semester</option>
-                        <option value="2">Choose date</option>
+                    <select class="form-select select${childIndex}" name="selectType[${childIndex}]" data-id="${childIndex}" onchange="selected(this)">
+                        <option value="First day of semester">First day of semester</option>
+                        <option value="date">Choose date</option>
                     </select>
 
                     <div style="display:none" class="mt-3 form-group date-select-${childIndex}">
@@ -548,17 +548,17 @@ function addChild() {
                         <strong>For Regular Bus Service:</strong><br>
                         <label>&nbsp;&nbsp;Route <span class="required_label">*</span></label>
                         <ul class="listRoute">
-                            <label class="lable-radio"><input name="route[${childIndex}]" type="radio" id="route" class="form-check-input routeCheckbox" value="1"> 2 Ways </label></br>
-                            <label class="lable-radio"><input name="route[${childIndex}]" type="radio" id="route" class="form-check-input routeCheckbox" value="2"> 1 Way (AM) </label></br>
-                            <label class="lable-radio"><input name="route[${childIndex}]" type="radio" id="route" class="form-check-input routeCheckbox" value="3"> 1 Way (PM) </label></br>
+                            <label class="lable-radio"><input name="route[${childIndex}]" type="radio" id="route" class="form-check-input routeCheckbox" value="2 Ways (Regular Bus Service)"> 2 Ways </label></br>
+                            <label class="lable-radio"><input name="route[${childIndex}]" type="radio" id="route" class="form-check-input routeCheckbox" value="1 Way (AM) (Regular Bus Service)"> 1 Way (AM) </label></br>
+                            <label class="lable-radio"><input name="route[${childIndex}]" type="radio" id="route" class="form-check-input routeCheckbox" value="1 Way (PM) (Regular Bus Service)"> 1 Way (PM) </label></br>
                         </ul>
                         <br>
                         <strong>For Cairnhill 9 Shuttle Service (Shuttle bus fees apply):</strong><br>
                         <label>&nbsp;&nbsp;Route <span class="required_label">*</span></label>
                         <ul class="listRoute">
-                            <label class="lable-radio"><input name="route[${childIndex}]" type="radio" id="route" class="form-check-input routeCheckbox" onclick="handelShowModal()" value="4"> 2 Ways </label></br>
-                            <label class="lable-radio"><input name="route[${childIndex}]" type="radio" id="route" class="form-check-input routeCheckbox" value="5" onclick="handelShowModal()"> 1 Way (AM) </label></br>
-                            <label class="lable-radio"><input name="route[${childIndex}]" type="radio" id="route" class="form-check-input routeCheckbox" value="6" onclick="handelShowModal()"> 1 Way (PM) </label></br>
+                            <label class="lable-radio"><input name="route[${childIndex}]" type="radio" id="route" class="form-check-input routeCheckbox" onclick="handelShowModal()" value="2 Ways (Cairnhill 9 Shuttle Service)"> 2 Ways </label></br>
+                            <label class="lable-radio"><input name="route[${childIndex}]" type="radio" id="route" class="form-check-input routeCheckbox" value="1 Way (AM) (Cairnhill 9 Shuttle Service)" onclick="handelShowModal()"> 1 Way (AM) </label></br>
+                            <label class="lable-radio"><input name="route[${childIndex}]" type="radio" id="route" class="form-check-input routeCheckbox" value="1 Way (PM) (Cairnhill 9 Shuttle Service)" onclick="handelShowModal()"> 1 Way (PM) </label></br>
                         </ul>
                     </div>
                     <div class="form-group col-md-12">
@@ -625,7 +625,7 @@ function selected(input) {
     var id = input.getAttribute('data-id');
     var className = '.select' + id;
     var val = $(className).val();
-    if (val == 1) {
+    if (val == 'First day of semester') {
         $(".date-select-" + id).css("display", "none");
     } else {
         $(".date-select-" + id).css("display", "block");
@@ -662,7 +662,6 @@ function addUpload(value) {
                 size: 'viewport'
             }).then(function(res) {
                 $(".baseImg-" + value).val(res);
-
             });
         }
     });
@@ -698,6 +697,7 @@ function addUpload(value) {
 function loadImgDemo(items) {
     var id = items.getAttribute('data-id');
     $(".demo-img-" + id).click();
+
 }
 
 
@@ -719,6 +719,7 @@ var croppie_obj = $(".upload-demo-wrap").croppie({
             size: 'viewport'
         }).then(function(res) {
             $(".baseImg-1").val(res);
+
         });
     }
 });
@@ -761,16 +762,17 @@ function sendAjax() {
     var dataFor = [];
     for (i = 1; i <= childIndex; i++) {
         var dataForItems = {
-            'familyName': $("input[name='familyName[" + i + "]']").val(),
-            'givenName': $("input[name='givenName[" + i + "]']").val(),
-            'birthDay': $("input[name='birthDay[" + i + "]']").val(),
-            'schoolId': $("input[name='schoolId[" + i + "]']").val(),
+            'family_name': $("input[name='familyName[" + i + "]']").val(),
+            'given_name': $("input[name='givenName[" + i + "]']").val(),
+            'birth_day': $("input[name='birthDay[" + i + "]']").val(),
+            'school_id': $("input[name='schoolId[" + i + "]']").val(),
             'grade': $("input[name='grade[" + i + "]']").val(),
             'gender': $("[name='flexRadioDefault[" + i + "]']:checked").val(),
-            'dateChoose': $("input[name='date-choose[" + i + "]']").val(),
+            'select_type': $("[name='selectType[" + i + "]']").val(),
+            'date_choose': $("input[name='date-choose[" + i + "]']").val(),
             'route': $("[name='route[" + i + "]']:checked").val(),
             'description': $("textarea[name='description[" + i + "]']").val(),
-            'baseImg': $("input[name='baseImg[" + i + "]']").val(),
+            'base_img': $("input[name='baseImg[" + i + "]']").val(),
         }
         dataFor.push(dataForItems);
     }
@@ -778,45 +780,54 @@ function sendAjax() {
 
     var _token = $('input[name="_token"]').val();
 
+    var dataBelow = $("[name='detailBelow']:checked").val()
+    if (dataBelow == undefined) {
+        var valueBelow = null
+    } else {
+        var valueBelow = $("[name='detailBelow']:checked").val()
+    }
+
     var allData = {
         'father': {
-            'fatherFamilyName': $("#fatherFamilyName").val(),
-            'fatherFirstName': $("#fatherFirstName").val(),
-            'fatherMobilePhone': $("#fatherMobilePhone").val(),
-            'fatherOfficePhone': $("#fatherOfficePhone").val(),
-            'fatherEmailAddress': $("#fatherEmailAddress").val(),
+            'father_family_name': $("#fatherFamilyName").val(),
+            'father_first_name': $("#fatherFirstName").val(),
+            'father_mobile_phone': $("#fatherMobilePhone").val(),
+            'father_office_phone': $("#fatherOfficePhone").val(),
+            'father_email_address': $("#fatherEmailAddress").val(),
         },
         'mother': {
-            'motherFamilyName': $("#motherFamilyName").val(),
-            'motherFirstName': $("#motherFirstName").val(),
-            'motherMobilePhone': $("#motherMobilePhone").val(),
-            'motherOfficePhone': $("#motherOfficePhone").val(),
-            'motherEmailAddress': $("#motherEmailAddress").val(),
+            'mother_family_name': $("#motherFamilyName").val(),
+            'mother_first_name': $("#motherFirstName").val(),
+            'mother_mobile_phone': $("#motherMobilePhone").val(),
+            'mother_office_phone': $("#motherOfficePhone").val(),
+            'mother_email_address': $("#motherEmailAddress").val(),
         },
+        'people_contact': $("[name='peopleContact']:checked").val(),
+        'payment_bill': $("[name='paymentCheck']:checked").val(),
+        'detail_below': valueBelow,
         'guardian': {
-            'guardianFamilyName': $("#guardianFamilyName").val(),
-            'guardianFirstName': $("#guardianFirstName").val(),
-            'guardianMobilePhone': $("#guardianMobilePhone").val(),
-            'guardianOfficePhone': $("#guardianOfficePhone").val(),
-            'guardianEmailAddress': $("#guardianEmailAddress").val(),
+            'guardian_family_name': $("#guardianFamilyName").val(),
+            'guardian_first_name': $("#guardianFirstName").val(),
+            'guardian_mobile_phone': $("#guardianMobilePhone").val(),
+            'guardian_office_phone': $("#guardianOfficePhone").val(),
+            'guardian_email_address': $("#guardianEmailAddress").val(),
         },
-        'billingAddress': {
+        'building_address': {
             'block': $("#block").val(),
             'street': $("#street").val(),
-            'postalCode': $("#postalCode").val(),
+            'postal_code': $("#postalCode").val(),
             'unit': $("#unit").val(),
             'building': $("#building").val(),
         },
-        'companyAddress': {
-            'companyName': $("#companyName").val(),
-            'billingAddress': $("#billingAddress").val(),
+        'company_address': {
+            'company_name': $("#companyName").val(),
+            'building_address': $("#billingAddress").val(),
             'attention': $("#attention").val(),
-            'billingEmailAddress': $("#billingEmailAddress").val(),
+            'billing_email_address': $("#billingEmailAddress").val(),
         },
-        'childInformation': dataFor
+        'child_info': dataFor
     }
 
-    console.log(dataFor);
 
     $.ajax({
         url: 'check',
@@ -829,4 +840,55 @@ function sendAjax() {
             console.log(data);
         }
     })
+}
+
+if ($("[name='peopleContact']:checked").val() == 'mother' && $("[name='paymentCheck']:checked").val() == 'mother') {
+    addRequiredMother();
+    removeRequiredFather();
+    removeRequiredGuardian();
+    removeNameFather()
+} else if ($("[name='peopleContact']:checked").val() == 'mother' && $("[name='paymentCheck']:checked").val() == 'other') {
+    addRequiredMother();
+    removeRequiredFather();
+    removeRequiredGuardian();
+    removeNameFather()
+    removeNamedGuardian();
+} else if ($("[name='peopleContact']:checked").val() == 'mother' && $("[name='paymentCheck']:checked").val() == 'father') {
+    addRequiredMother();
+    addRequiredFather();
+    removeRequiredGuardian();
+    removeNamedGuardian();
+} else if ($("[name='peopleContact']:checked").val() == 'father' && $("[name='paymentCheck']:checked").val() == 'father') {
+    addRequiredFather();
+    removeRequiredMother();
+    removeRequiredGuardian();
+    removeNameMother();
+    removeNamedGuardian();
+} else if ($("[name='peopleContact']:checked").val() == 'father' && $("[name='paymentCheck']:checked").val() == 'mother') {
+    addRequiredFather();
+    addRequiredMother();
+    removeRequiredGuardian();
+    removeNamedGuardian();
+} else if ($("[name='peopleContact']:checked").val() == 'father' && $("[name='paymentCheck']:checked").val() == 'other') {
+    addRequiredFather();
+    removeRequiredMother();
+    removeRequiredGuardian();
+    removeNameMother();
+    removeNamedGuardian();
+} else if ($("[name='peopleContact']:checked").val() == 'guardian' && $("[name='paymentCheck']:checked").val() == 'father') {
+    addRequiredGuardian();
+    addRequiredFather();
+    removeRequiredMother();
+    removeNameMother();
+} else if ($("[name='peopleContact']:checked").val() == 'guardian' && $("[name='paymentCheck']:checked").val() == 'mother') {
+    addRequiredGuardian();
+    removeRequiredFather();
+    addRequiredMother();
+    removeNameFather();
+} else if ($("[name='peopleContact']:checked").val() == 'guardian' && $("[name='paymentCheck']:checked").val() == 'other') {
+    addRequiredGuardian();
+    removeRequiredFather();
+    removeRequiredMother();
+    removeNameFather();
+    removeNameMother();
 }
