@@ -13,14 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('pick_up_location', function (Blueprint $table) {
-            $table->id();
-            $table->string('block')->nullable();
-            $table->string('building')->nullable();
-            $table->string('postal_code')->nullable();
-            $table->string('street')->nullable();
-            $table->string('unit')->nullable();
+        Schema::create('families', function (Blueprint $table) {
+            $table->increments('id');
             $table->timestamps();
+            $table->softDeletes($column = 'deleted_at', $precision = 0);
         });
     }
 
@@ -31,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pick_up_location');
+        Schema::dropIfExists('familys');
     }
 };

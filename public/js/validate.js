@@ -719,6 +719,7 @@ var croppie_obj = $(".upload-demo-wrap").croppie({
             size: 'viewport'
         }).then(function(res) {
             $(".baseImg-1").val(res);
+            console.log(res);
 
         });
     }

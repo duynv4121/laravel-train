@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class childs extends Model
 {
-    protected $table = 'childs';
+    protected $table = 'children';
     protected $fillable = [];
     protected $primarykey = 'id';
     public $timestamps = true;

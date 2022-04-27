@@ -1,8 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\childs;
+use App\Models\children;
 use App\Models\parents;
+use App\Models\companies;
+use App\Models\locations;
+use App\Models\families;
 
 
 use Illuminate\Http\Request;
@@ -19,44 +22,41 @@ class registerController extends Controller
     {
         $data = $request->all();
 
+        // return $data;
+
+
+        $family = new families;
+        $family->save();
+
         $parent = new parents();
-
-        $parent->father_family_name = $data['dataAll']['father']['father_family_name'];
-        $parent->father_first_name = $data['dataAll']['father']['father_first_name'];
-        $parent->father_mobile_phone = $data['dataAll']['father']['father_mobile_phone'];
-        $parent->father_office_phone = $data['dataAll']['father']['father_office_phone'];
-        $parent->father_email_address = $data['dataAll']['father']['father_email_address'];
-
-        $parent->mother_family_name = $data['dataAll']['mother']['mother_family_name'];
-        $parent->mother_first_name = $data['dataAll']['mother']['mother_first_name'];
-        $parent->mother_mobile_phone = $data['dataAll']['mother']['mother_mobile_phone'];
-        $parent->mother_office_phone = $data['dataAll']['mother']['mother_office_phone'];
-        $parent->mother_email_address = $data['dataAll']['mother']['mother_email_address'];
-
-        $parent->guardian_family_name = $data['dataAll']['guardian']['guardian_family_name'];
-        $parent->guardian_first_name = $data['dataAll']['guardian']['guardian_first_name'];
-        $parent->guardian_mobile_phone = $data['dataAll']['guardian']['guardian_mobile_phone'];
-        $parent->guardian_office_phone = $data['dataAll']['guardian']['guardian_office_phone'];
-        $parent->guardian_email_address = $data['dataAll']['guardian']['guardian_email_address'];
-
-        $parent->block = $data['dataAll']['building_address']['block'];
-        $parent->building = $data['dataAll']['building_address']['building'];
-        $parent->postal_code = $data['dataAll']['building_address']['postal_code'];
-        $parent->street = $data['dataAll']['building_address']['street'];
-        $parent->unit = $data['dataAll']['building_address']['unit'];
-
-
-        $parent->attention = $data['dataAll']['company_address']['attention'];
-        $parent->building_address = $data['dataAll']['company_address']['building_address'];
-        $parent->billing_email_address = $data['dataAll']['company_address']['billing_email_address'];
-        $parent->company_name = $data['dataAll']['company_address']['company_name'];
-
-
-        $parent->payment_bill = $data['dataAll']['payment_bill'];
-        $parent->people_contact = $data['dataAll']['people_contact'];
-        $parent->detail_below = $data['dataAll']['detail_below'];
-
+        $parent->family_name = $data['dataAll']['father']['family_name'];
+        $parent->first_name = $data['dataAll']['father']['first_name'];
+        $parent->mobile_phone = $data['dataAll']['father']['mobile_phone'];
+        $parent->office_phone = $data['dataAll']['father']['office_phone'];
+        $parent->email = $data['dataAll']['father']['email_address'];
+        $parent->family_id = $family->id;
+        $parent->type = $family->id;
         $parent->save();
+
+
+        $pick_up = new locations();
+        $pick_up->block = $data['dataAll']['building_address']['block'];
+        $pick_up->building = $data['dataAll']['building_address']['building'];
+        $pick_up->postal_code = $data['dataAll']['building_address']['postal_code'];
+        $pick_up->street = $data['dataAll']['building_address']['street'];
+        $pick_up->unit = $data['dataAll']['building_address']['unit'];
+        $pick_up->save();
+
+
+        $payment = new companies();
+        $payment->id_parent = $parent->id;
+        $payment->attention = $data['dataAll']['company_address']['attention'];
+        $payment->building_address = $data['dataAll']['company_address']['building_address'];
+        $payment->billing_email_address = $data['dataAll']['company_address']['billing_email_address'];
+        $payment->company_name = $data['dataAll']['company_address']['company_name'];
+        $payment->payment_bill = $data['dataAll']['payment_bill'];
+        $payment->detail_below = $data['dataAll']['detail_below'];
+        $payment->save();
 
 
         $item_return = [];
@@ -69,6 +69,7 @@ class registerController extends Controller
         for($i=0; $i <= $count_item_return-1; $i++){
             $child = new childs();
             $child->id_parent = $parent->id;
+            $child->id_pickup = $pick_up->id;
             $child->family_name = $item_return[$i]['family_name'];
             $child->given_name = $item_return[$i]['given_name'];
             $child->grade = $item_return[$i]['grade'];
