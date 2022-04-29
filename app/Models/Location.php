@@ -9,7 +9,7 @@ class Location extends Model
 {
     protected $table = 'locations';
     protected $fillable = [
-        'type_pickup_dropoff',
+        'type_location',
         'block',
         'building',
         'postal_code',

@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('locations', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('type_pickup_dropoff')->nullable();
-            $table->string('block')->nullable();
+            $table->string('type_location')->nullable();
+            $table->string('block');
             $table->string('building')->nullable();
-            $table->string('postal_code')->nullable();
-            $table->string('street')->nullable();
+            $table->string('postal_code');
+            $table->string('street');
             $table->string('unit')->nullable();
             $table->string('location')->nullable();
             $table->string('coordinates')->nullable();

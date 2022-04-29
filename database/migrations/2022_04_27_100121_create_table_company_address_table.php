@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('companies', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('company_name')->nullable();
-            $table->string('attention_to')->nullable();
-            $table->string('address')->nullable();
-            $table->string('email_address')->nullable();
+            $table->string('company_name');
+            $table->string('attention_to');
+            $table->string('address');
+            $table->string('email_address');
             $table->string('coordinates')->nullable();
             $table->timestamps();
             $table->softDeletes($column = 'deleted_at', $precision = 0);

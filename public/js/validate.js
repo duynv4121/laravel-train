@@ -421,7 +421,7 @@ $("input[type=radio][name=paymentCheck]").change(function() {
         this.value == "other" &&
         $("[name='peopleContact']:checked").val() == "father"
     ) {
-        addRequiredGuardian();
+        removeRequiredGuardian();
         addRequiredFather();
         removeRequiredMother();
         removeNameMother();
@@ -429,7 +429,7 @@ $("input[type=radio][name=paymentCheck]").change(function() {
         this.value == "other" &&
         $("[name='peopleContact']:checked").val() == "mother"
     ) {
-        addRequiredGuardian();
+        removeRequiredGuardian();
         removeRequiredFather();
         addRequiredMother();
         removeNameFather();
@@ -830,7 +830,7 @@ function sendAjax() {
                 first_name: $("#fatherFirstName").val(),
                 mobile_phone: $("#fatherMobilePhone").val(),
                 office_phone: $("#fatherOfficePhone").val(),
-                email_address: $("#fatherEmailAddress").val(),
+                email: $("#fatherEmailAddress").val(),
                 type: 'father',
             },
             mother: {
@@ -838,7 +838,7 @@ function sendAjax() {
                 first_name: $("#motherFirstName").val(),
                 mobile_phone: $("#motherMobilePhone").val(),
                 office_phone: $("#motherOfficePhone").val(),
-                email_address: $("#motherEmailAddress").val(),
+                email: $("#motherEmailAddress").val(),
                 type: 'mother',
             },
             guardian: {
@@ -846,7 +846,7 @@ function sendAjax() {
                 first_name: $("#guardianFirstName").val(),
                 mobile_phone: $("#guardianMobilePhone").val(),
                 office_phone: $("#guardianOfficePhone").val(),
-                email_address: $("#guardianEmailAddress").val(),
+                email: $("#guardianEmailAddress").val(),
                 type: 'guardian',
             },
         },
@@ -862,8 +862,8 @@ function sendAjax() {
         },
         company: {
             company_name: $("#companyName").val(),
-            address_to: $("#billingAddress").val(),
-            attention: $("#attention").val(),
+            address: $("#billingAddress").val(),
+            attention_to: $("#attention").val(),
             email_address: $("#billingEmailAddress").val(),
         },
         child_info: dataFor,

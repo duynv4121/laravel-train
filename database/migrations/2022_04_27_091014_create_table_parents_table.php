@@ -15,13 +15,13 @@ return new class extends Migration
     {
         Schema::create('parents', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('family_name')->nullable();
-            $table->string('first_name')->nullable();
-            $table->string('mobile_phone')->nullable();
+            $table->string('family_name');
+            $table->string('first_name');
+            $table->string('mobile_phone');
             $table->string('office_phone')->nullable();
-            $table->string('email')->nullable();
+            $table->string('email');
             $table->integer('family_id')->unsigned();
-            $table->string('type')->nullable();
+            $table->string('type');
             $table->timestamps();
             $table->softDeletes($column = 'deleted_at', $precision = 0);
 

@@ -274,7 +274,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="fatherFirstName">Unit Number</label>
-                                    <input name="unit" type="number" class="form-control" id="unit"
+                                    <input name="unit" type="text" class="form-control" id="unit"
                                             placeholder="eg: 01-15">
                                 </div>
                             </div>

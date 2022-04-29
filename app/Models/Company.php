@@ -9,9 +9,9 @@ class Company extends Model
 {
     protected $table = 'companies';
     protected $fillable = [
-        'attention',
-        'billing_address',
-        'billing_email_address',
+        'attention_to',
+        'address',
+        'email_address',
         'company_name',
     ];
     protected $primarykey = 'id';
