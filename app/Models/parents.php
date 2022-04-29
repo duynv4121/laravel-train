@@ -6,10 +6,18 @@ use App\Models\payments;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class parents extends Model
+class Parents extends Model
 {
     protected $table = 'parents';
-    protected $fillable = [];
+    protected $fillable = [
+        'family_name',
+        'first_name',
+        'mobile_phone',
+        'office_phone',
+        'email',
+        'family_id',
+        'type',
+    ];
     protected $primarykey = 'id';
     public $timestamps = true;
 

@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('office_phone')->nullable();
             $table->string('email')->nullable();
             $table->integer('family_id')->unsigned();
-            $table->integer('type')->nullable();
+            $table->string('type')->nullable();
             $table->timestamps();
             $table->softDeletes($column = 'deleted_at', $precision = 0);
 

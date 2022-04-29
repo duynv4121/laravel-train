@@ -55,4 +55,10 @@ Route::get('/edit/{id}', [registerController::class, 'edit']);
 
 Route::post('/check', [registerController::class, 'check']);
 
+Route::get('/file/{url}', function($url) {
+    $path = storage_path() . '/' . 'register/' . $url;
+    return Response::file($path);
+});
+
+
 

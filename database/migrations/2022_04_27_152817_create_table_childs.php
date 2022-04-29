@@ -24,9 +24,9 @@ return new class extends Migration
             $table->date('date_of_birth');
             $table->string('school_code');
             $table->string('type_of_service');
-            $table->date('date_start');
+            $table->date('date_start')->nullable();
             $table->text('descriptions')->nullable();
-            $table->string('image');
+            $table->text('image')->nullable();
             $table->integer('first_contact_id')->unsigned();
             $table->string('payment_contact_type');
             $table->integer('payment_contact_id');

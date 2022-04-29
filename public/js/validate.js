@@ -1,11 +1,11 @@
 //validate
 $(document).ready(function() {
-    $('#submit').click(function() {
+    $("#submit").click(function() {
         $(".familyName").each(function() {
             $(this).rules("add", {
                 required: true,
                 messages: {
-                    required: "Please input given name"
+                    required: "Please input family name",
                 },
             });
         });
@@ -13,31 +13,31 @@ $(document).ready(function() {
             $(this).rules("add", {
                 required: true,
                 messages: {
-                    required: "Please input given name"
-                }
+                    required: "Please input given name",
+                },
             });
         });
         $(".birthDay").each(function() {
             $(this).rules("add", {
                 required: true,
                 messages: {
-                    required: "Please input date of birth"
-                }
+                    required: "Please input date of birth",
+                },
             });
         });
         $(".date-choose").each(function() {
             $(this).rules("add", {
                 required: true,
                 messages: {
-                    required: "Please input start date of service"
-                }
+                    required: "Please input start date of service",
+                },
             });
         });
         $(".routeCheckbox").each(function() {
             $(this).rules("add", {
                 required: true,
                 messages: {
-                    required: "Please choose route"
+                    required: "Please choose route",
                 },
             });
         });
@@ -48,180 +48,182 @@ $(document).ready(function() {
         if (!form.valid()) return false;
 
         sendAjax();
-    })
-
+    });
 });
 
 $("#parentInformation").validate({
     rules: {
-        "fatherFamilyName": {
+        fatherFamilyName: {
             required: true,
         },
-        "fatherFirstName": {
+        fatherFirstName: {
             required: true,
         },
-        "fatherMobilePhone": {
+        fatherMobilePhone: {
             required: true,
         },
-        "fatherEmailAddress": {
+        fatherEmailAddress: {
             required: true,
-            email: true
+            email: true,
         },
-        "motherFamilyName": {
-            required: true,
-        },
-        "motherFirstName": {
+        motherFamilyName: {
             required: true,
         },
-        "motherMobilePhone": {
+        motherFirstName: {
             required: true,
         },
-        "motherEmailAddress": {
-            required: true,
-            email: true
-        },
-        "guardianFamilyName": {
+        motherMobilePhone: {
             required: true,
         },
-        "guardianFirstName": {
+        motherEmailAddress: {
+            required: true,
+            email: true,
+        },
+        guardianFamilyName: {
             required: true,
         },
-        "guardianMobilePhone": {
+        guardianFirstName: {
             required: true,
         },
-        "guardianEmailAddress": {
-            required: true,
-            email: true
-        },
-        "block": {
+        guardianMobilePhone: {
             required: true,
         },
-        "street": {
+        guardianEmailAddress: {
+            required: true,
+            email: true,
+        },
+        block: {
             required: true,
         },
-        "postalCode": {
+        street: {
             required: true,
         },
-        "policy1": {
+        postalCode: {
             required: true,
         },
-        "policy2": {
+        policy1: {
             required: true,
         },
-        "companyName": {
+        policy2: {
             required: true,
         },
-        "billingAddress": {
+        companyName: {
             required: true,
         },
-        "attention": {
+        billingAddress: {
             required: true,
         },
-        "billingEmailAddress": {
+        attention: {
+            required: true,
+        },
+        billingEmailAddress: {
             required: true,
         },
     },
 
     messages: {
-        "fatherFamilyName": {
+        fatherFamilyName: {
             required: "Please input family name",
         },
-        "fatherFirstName": {
+        fatherFirstName: {
             required: "Please input first name",
         },
-        "fatherMobilePhone": {
+        fatherMobilePhone: {
             required: "Please input mobile phone",
         },
-        "fatherEmailAddress": {
+        fatherEmailAddress: {
             required: "Please input email address",
-            email: "Your email address is invalid"
+            email: "Your email address is invalid",
         },
-        "motherFamilyName": {
+        motherFamilyName: {
             required: "Please input family name",
         },
-        "motherFirstName": {
+        motherFirstName: {
             required: "Please input first name",
         },
-        "motherMobilePhone": {
+        motherMobilePhone: {
             required: "Please input mobile phone",
         },
-        "motherEmailAddress": {
+        motherEmailAddress: {
             required: "Please input email address",
-            email: "Your email address is invalid"
+            email: "Your email address is invalid",
         },
-        "guardianFamilyName": {
+        guardianFamilyName: {
             required: "Please input family name",
         },
-        "guardianFirstName": {
+        guardianFirstName: {
             required: "Please input first name",
         },
-        "guardianMobilePhone": {
+        guardianMobilePhone: {
             required: "Please input mobile phone",
         },
-        "guardianEmailAddress": {
+        guardianEmailAddress: {
             required: "Please input email address",
-            email: "Your email address is invalid"
+            email: "Your email address is invalid",
         },
-        "block": {
+        block: {
             required: "Please input block",
         },
-        "street": {
+        street: {
             required: "Please input street name",
         },
-        "postalCode": {
+        postalCode: {
             required: "Please input postal code",
         },
-        "policy1": {
+        policy1: {
             required: "Please agree Terms and Conditions & Bus Regulations before submit",
         },
-        "policy2": {
+        policy2: {
             required: "Please read and confirm the Data Protection Notice before submit",
         },
-        "companyName": {
+        companyName: {
             required: "Please input company name",
         },
-        "billingAddress": {
+        billingAddress: {
             required: "Please input billing address",
         },
-        "attention": {
+        attention: {
             required: "Please input attention",
         },
-        "billingEmailAddress": {
+        billingEmailAddress: {
             required: "Please input email address",
         },
     },
     errorPlacement: function(error, element) {
-        console.log('dd', element.attr("name"))
         if (element.attr("name") == "policy1") {
             error.appendTo(".errorPolicy1");
         }
         if (element.attr("name") == "policy2") {
             error.appendTo(".errorPolicy2");
         }
-        if (element.attr("name") != "policy2" && element.attr("name") != "policy1") {
-            error.insertAfter(element)
+        if (
+            element.attr("name") != "policy2" &&
+            element.attr("name") != "policy1"
+        ) {
+            error.insertAfter(element);
         }
         if (element[0].id == "route") {
-            error.appendTo(element.parents('.routeCheck'));
+            error.appendTo(element.parents(".routeCheck"));
         }
     },
     focusInvalid: false,
     invalidHandler: function(form, validator) {
-        $('html, body').animate({
-            scrollTop: $(validator.errorList[0].element).offset().top
-        }, 0);
+        $("html, body").animate({
+                scrollTop: $(validator.errorList[0].element).offset().top,
+            },
+            0
+        );
     },
 });
 
 //handel
 
-
 function addRequiredFather() {
-    $('#fatherFamilyName').attr('name', 'fatherFamilyName');
-    $('#fatherFirstName').attr('name', 'fatherFirstName');
-    $('#fatherMobilePhone').attr('name', 'fatherMobilePhone');
-    $('#fatherOfficePhone').attr('name', 'fatherOfficePhone');
-    $('#fatherEmailAddress').attr('name', 'fatherEmailAddress');
+    $("#fatherFamilyName").attr("name", "fatherFamilyName");
+    $("#fatherFirstName").attr("name", "fatherFirstName");
+    $("#fatherMobilePhone").attr("name", "fatherMobilePhone");
+    $("#fatherOfficePhone").attr("name", "fatherOfficePhone");
+    $("#fatherEmailAddress").attr("name", "fatherEmailAddress");
 }
 
 function removeRequiredFather() {
@@ -232,20 +234,19 @@ function removeRequiredFather() {
 }
 
 function removeNameFather() {
-    $('#fatherFamilyName').attr('name', '');
-    $('#fatherFirstName').attr('name', '');
-    $('#fatherMobilePhone').attr('name', '');
-    $('#fatherOfficePhone').attr('name', '');
-    $('#fatherEmailAddress').attr('name', '');
+    $("#fatherFamilyName").attr("name", "");
+    $("#fatherFirstName").attr("name", "");
+    $("#fatherMobilePhone").attr("name", "");
+    $("#fatherOfficePhone").attr("name", "");
+    $("#fatherEmailAddress").attr("name", "");
 }
 
-
 function addRequiredMother() {
-    $('#motherFamilyName').attr('name', 'motherFamilyName');
-    $('#motherFirstName').attr('name', 'motherFirstName');
-    $('#motherMobilePhone').attr('name', 'motherMobilePhone');
-    $('#motherOfficePhone').attr('name', 'motherOfficePhone');
-    $('#motherEmailAddress').attr('name', 'motherEmailAddress');
+    $("#motherFamilyName").attr("name", "motherFamilyName");
+    $("#motherFirstName").attr("name", "motherFirstName");
+    $("#motherMobilePhone").attr("name", "motherMobilePhone");
+    $("#motherOfficePhone").attr("name", "motherOfficePhone");
+    $("#motherEmailAddress").attr("name", "motherEmailAddress");
 }
 
 function removeRequiredMother() {
@@ -256,19 +257,19 @@ function removeRequiredMother() {
 }
 
 function removeNameMother() {
-    $('#motherFamilyName').attr('name', '');
-    $('#motherFirstName').attr('name', '');
-    $('#motherMobilePhone').attr('name', '');
-    $('#motherOfficePhone').attr('name', '');
-    $('#motherEmailAddress').attr('name', '');
+    $("#motherFamilyName").attr("name", "");
+    $("#motherFirstName").attr("name", "");
+    $("#motherMobilePhone").attr("name", "");
+    $("#motherOfficePhone").attr("name", "");
+    $("#motherEmailAddress").attr("name", "");
 }
 
 function addRequiredGuardian() {
-    $('#guardianFamilyName').attr('name', 'guardianFamilyName');
-    $('#guardianFirstName').attr('name', 'guardianFirstName');
-    $('#guardianMobilePhone').attr('name', 'guardianMobilePhone');
-    $('#guardianOfficePhone').attr('name', 'guardianOfficePhone');
-    $('#guardianEmailAddress').attr('name', 'guardianEmailAddress');
+    $("#guardianFamilyName").attr("name", "guardianFamilyName");
+    $("#guardianFirstName").attr("name", "guardianFirstName");
+    $("#guardianMobilePhone").attr("name", "guardianMobilePhone");
+    $("#guardianOfficePhone").attr("name", "guardianOfficePhone");
+    $("#guardianEmailAddress").attr("name", "guardianEmailAddress");
 }
 
 function removeRequiredGuardian() {
@@ -279,209 +280,252 @@ function removeRequiredGuardian() {
 }
 
 function removeNamedGuardian() {
-    $('#guardianFamilyName').attr('name', '');
-    $('#guardianFirstName').attr('name', '');
-    $('#guardianMobilePhone').attr('name', '');
-    $('#guardianOfficePhone').attr('name', '');
-    $('#guardianEmailAddress').attr('name', '');
+    $("#guardianFamilyName").attr("name", "");
+    $("#guardianFirstName").attr("name", "");
+    $("#guardianMobilePhone").attr("name", "");
+    $("#guardianOfficePhone").attr("name", "");
+    $("#guardianEmailAddress").attr("name", "");
 }
 
-$('input[type=radio][name=peopleContact]').change(function() {
-    if (this.value == 'mother' && $("[name='paymentCheck']:checked").val() == 'mother') {
+$("input[type=radio][name=peopleContact]").change(function() {
+    if (
+        this.value == "mother" &&
+        $("[name='paymentCheck']:checked").val() == "mother"
+    ) {
         addRequiredMother();
         removeRequiredFather();
         removeRequiredGuardian();
-        removeNameFather()
-    } else if (this.value == 'mother' && $("[name='paymentCheck']:checked").val() == 'other') {
+        removeNameFather();
+    } else if (
+        this.value == "mother" &&
+        $("[name='paymentCheck']:checked").val() == "other"
+    ) {
         addRequiredMother();
         removeRequiredFather();
         removeRequiredGuardian();
-        removeNameFather()
+        removeNameFather();
         removeNamedGuardian();
-    } else if (this.value == 'mother' && $("[name='paymentCheck']:checked").val() == 'father') {
+    } else if (
+        this.value == "mother" &&
+        $("[name='paymentCheck']:checked").val() == "father"
+    ) {
         addRequiredMother();
         addRequiredFather();
         removeRequiredGuardian();
         removeNamedGuardian();
-    } else if (this.value == 'father' && $("[name='paymentCheck']:checked").val() == 'father') {
+    } else if (
+        this.value == "father" &&
+        $("[name='paymentCheck']:checked").val() == "father"
+    ) {
         addRequiredFather();
         removeRequiredMother();
         removeRequiredGuardian();
         removeNameMother();
         removeNamedGuardian();
-    } else if (this.value == 'father' && $("[name='paymentCheck']:checked").val() == 'mother') {
+    } else if (
+        this.value == "father" &&
+        $("[name='paymentCheck']:checked").val() == "mother"
+    ) {
         addRequiredFather();
         addRequiredMother();
         removeRequiredGuardian();
         removeNamedGuardian();
-    } else if (this.value == 'father' && $("[name='paymentCheck']:checked").val() == 'other') {
+    } else if (
+        this.value == "father" &&
+        $("[name='paymentCheck']:checked").val() == "other"
+    ) {
         addRequiredFather();
         removeRequiredMother();
         removeRequiredGuardian();
         removeNameMother();
         removeNamedGuardian();
-    } else if (this.value == 'guardian' && $("[name='paymentCheck']:checked").val() == 'father') {
+    } else if (
+        this.value == "guardian" &&
+        $("[name='paymentCheck']:checked").val() == "father"
+    ) {
         addRequiredGuardian();
         addRequiredFather();
         removeRequiredMother();
         removeNameMother();
-    } else if (this.value == 'guardian' && $("[name='paymentCheck']:checked").val() == 'mother') {
+    } else if (
+        this.value == "guardian" &&
+        $("[name='paymentCheck']:checked").val() == "mother"
+    ) {
         addRequiredGuardian();
         removeRequiredFather();
         addRequiredMother();
         removeNameFather();
-    } else if (this.value == 'guardian' && $("[name='paymentCheck']:checked").val() == 'other') {
-        addRequiredGuardian();
-        removeRequiredFather();
-        removeRequiredMother();
-        removeNameFather();
-        removeNameMother();
-    }
-})
-
-
-
-$('input[type=radio][name=paymentCheck]').change(function() {
-    if (this.value == 'mother' && $("[name='peopleContact']:checked").val() == 'mother') {
-        addRequiredMother();
-        removeRequiredFather();
-        removeRequiredGuardian();
-        removeNameFather()
-    } else if (this.value == 'mother' && $("[name='peopleContact']:checked").val() == 'guardian') {
-        addRequiredMother();
-        removeRequiredFather();
-        addRequiredGuardian();
-        removeNameFather()
-    } else if (this.value == 'mother' && $("[name='peopleContact']:checked").val() == 'father') {
-        addRequiredMother();
-        addRequiredFather();
-        removeRequiredGuardian();
-        removeNamedGuardian();
-    } else if (this.value == 'father' && $("[name='peopleContact']:checked").val() == 'father') {
-        addRequiredFather();
-        removeRequiredMother();
-        removeRequiredGuardian();
-        removeNameMother();
-        removeNamedGuardian();
-    } else if (this.value == 'father' && $("[name='peopleContact']:checked").val() == 'mother') {
-        addRequiredFather();
-        addRequiredMother();
-        removeRequiredGuardian();
-        removeNamedGuardian();
-    } else if (this.value == 'father' && $("[name='peopleContact']:checked").val() == 'guardian') {
-        addRequiredFather();
-        removeRequiredMother();
-        addRequiredGuardian();
-        removeNameMother();
-    } else if (this.value == 'other' && $("[name='peopleContact']:checked").val() == 'father') {
-        addRequiredGuardian();
-        addRequiredFather();
-        removeRequiredMother();
-        removeNameMother();
-    } else if (this.value == 'other' && $("[name='peopleContact']:checked").val() == 'mother') {
-        addRequiredGuardian();
-        removeRequiredFather();
-        addRequiredMother();
-        removeNameFather();
-    } else if (this.value == 'other' && $("[name='peopleContact']:checked").val() == 'guardian') {
+    } else if (
+        this.value == "guardian" &&
+        $("[name='paymentCheck']:checked").val() == "other"
+    ) {
         addRequiredGuardian();
         removeRequiredFather();
         removeRequiredMother();
         removeNameFather();
         removeNameMother();
     }
-})
+});
 
+$("input[type=radio][name=paymentCheck]").change(function() {
+    if (
+        this.value == "mother" &&
+        $("[name='peopleContact']:checked").val() == "mother"
+    ) {
+        addRequiredMother();
+        removeRequiredFather();
+        removeRequiredGuardian();
+        removeNameFather();
+    } else if (
+        this.value == "mother" &&
+        $("[name='peopleContact']:checked").val() == "guardian"
+    ) {
+        addRequiredMother();
+        removeRequiredFather();
+        addRequiredGuardian();
+        removeNameFather();
+    } else if (
+        this.value == "mother" &&
+        $("[name='peopleContact']:checked").val() == "father"
+    ) {
+        addRequiredMother();
+        addRequiredFather();
+        removeRequiredGuardian();
+        removeNamedGuardian();
+    } else if (
+        this.value == "father" &&
+        $("[name='peopleContact']:checked").val() == "father"
+    ) {
+        addRequiredFather();
+        removeRequiredMother();
+        removeRequiredGuardian();
+        removeNameMother();
+        removeNamedGuardian();
+    } else if (
+        this.value == "father" &&
+        $("[name='peopleContact']:checked").val() == "mother"
+    ) {
+        addRequiredFather();
+        addRequiredMother();
+        removeRequiredGuardian();
+        removeNamedGuardian();
+    } else if (
+        this.value == "father" &&
+        $("[name='peopleContact']:checked").val() == "guardian"
+    ) {
+        addRequiredFather();
+        removeRequiredMother();
+        addRequiredGuardian();
+        removeNameMother();
+    } else if (
+        this.value == "other" &&
+        $("[name='peopleContact']:checked").val() == "father"
+    ) {
+        addRequiredGuardian();
+        addRequiredFather();
+        removeRequiredMother();
+        removeNameMother();
+    } else if (
+        this.value == "other" &&
+        $("[name='peopleContact']:checked").val() == "mother"
+    ) {
+        addRequiredGuardian();
+        removeRequiredFather();
+        addRequiredMother();
+        removeNameFather();
+    } else if (
+        this.value == "other" &&
+        $("[name='peopleContact']:checked").val() == "guardian"
+    ) {
+        addRequiredGuardian();
+        removeRequiredFather();
+        removeRequiredMother();
+        removeNameFather();
+        removeNameMother();
+    }
+});
 
 function setNameCheckBox() {
-    $('.companyName').attr('name', 'companyName');
-    $('.billingAddress').attr('name', 'billingAddress');
-    $('.attention').attr('name', 'attention');
-    $('.billingEmailAddress').attr('name', 'billingEmailAddress');
+    $(".companyName").attr("name", "companyName");
+    $(".billingAddress").attr("name", "billingAddress");
+    $(".attention").attr("name", "attention");
+    $(".billingEmailAddress").attr("name", "billingEmailAddress");
 }
 
 function removeNameCheckBox() {
-    $('.companyName').attr('name', '');
-    $('.billingAddress').attr('name', '');
-    $('.attention').attr('name', '');
-    $('.billingEmailAddress').attr('name', '');
+    $(".companyName").attr("name", "");
+    $(".billingAddress").attr("name", "");
+    $(".attention").attr("name", "");
+    $(".billingEmailAddress").attr("name", "");
 }
 
 var inputPayment = $(".inputPayment");
-var checkBoxPay = $("input[type='checkbox'][name=detailBelow]")
+var checkBoxPay = $("input[type='checkbox'][name=detailBelow]");
 var radioCur = $('input[name="paymentCheck"]:checked').val();
-$('input[type=radio][name=paymentCheck]').change(function() {
-    if (this.value == 'father') {
-        $(checkBoxPay).prop('checked', true);
-        if (checkBoxPay.is(':checked')) {
-            inputPayment.prop('disabled', true);
+$("input[type=radio][name=paymentCheck]").change(function() {
+    if (this.value == "father") {
+        $(checkBoxPay).prop("checked", true);
+        if (checkBoxPay.is(":checked")) {
+            inputPayment.prop("disabled", true);
             removeNameCheckBox();
         } else {
-            inputPayment.prop('disabled', false);
+            inputPayment.prop("disabled", false);
             setNameCheckBox();
         }
-    } else if (this.value == 'mother') {
-        $(checkBoxPay).prop('checked', true);
-        if (checkBoxPay.is(':checked')) {
-            inputPayment.prop('disabled', true);
+    } else if (this.value == "mother") {
+        $(checkBoxPay).prop("checked", true);
+        if (checkBoxPay.is(":checked")) {
+            inputPayment.prop("disabled", true);
             removeNameCheckBox();
         } else {
-            inputPayment.prop('disabled', false);
-            setNameCheckBox()
+            inputPayment.prop("disabled", false);
+            setNameCheckBox();
         }
     } else {
-        $(checkBoxPay).prop('checked', false);
-        if (checkBoxPay.is(':checked')) {
-            inputPayment.prop('disabled', true);
+        $(checkBoxPay).prop("checked", false);
+        if (checkBoxPay.is(":checked")) {
+            inputPayment.prop("disabled", true);
             removeNameCheckBox();
         } else {
-            inputPayment.prop('disabled', false);
+            inputPayment.prop("disabled", false);
             setNameCheckBox();
         }
     }
 });
-
 
 $(".showModal").click(function() {
     $(".modal-fixed").css("display", "block");
     $("body").css("overflowY", "hidden");
-})
-
-
-
-
+});
 
 $(".close-btn").click(function() {
     $(".modal-fixed").css("display", "none");
     $("body").css("overflowY", "auto");
-})
+});
 
-
-checkBoxPay.on('change', function() {
-    if (checkBoxPay.is(':checked')) {
-        inputPayment.prop('disabled', true);
+checkBoxPay.on("change", function() {
+    if (checkBoxPay.is(":checked")) {
+        inputPayment.prop("disabled", true);
         removeNameCheckBox();
     } else {
-        inputPayment.prop('disabled', false);
+        inputPayment.prop("disabled", false);
         setNameCheckBox();
     }
 });
 
-if (radioCur == 'father') {
-    $(checkBoxPay).prop('checked', true);
-    if (checkBoxPay.is(':checked')) {
-        inputPayment.prop('disabled', true);
+if (radioCur == "father") {
+    $(checkBoxPay).prop("checked", true);
+    if (checkBoxPay.is(":checked")) {
+        inputPayment.prop("disabled", true);
     } else {
-        inputPayment.prop('disabled', false);
+        inputPayment.prop("disabled", false);
     }
 }
 
-
 var childIndex = 1;
-$('#addMore').on('click ', function() {
+$("#addMore").on("click ", function() {
     addChild();
-})
-
+});
 
 function addChild() {
     childIndex++;
@@ -504,7 +548,7 @@ function addChild() {
                     </div>
                     <div class="form-group">
                         <label for="fatherFirstName">Date of Birth <span class="required_label">*</span></label>
-                        <input name="birthDay[${childIndex }]" type="text" class="form-control birthDay"
+                        <input name="birthDay[${childIndex}]" type="text" class="form-control birthDay"
                                 placeholder="eg: dd/mm/yyyy">       
                     </div>
                     <div class="form-group">
@@ -602,7 +646,7 @@ function addChild() {
             <div class="col-md-4">
                 <i onclick="myFunction(this)" data-id=${childIndex} class="fa-solid fa-xmark d-flex justify-content-end"></i>
                 <div class="haha-${childIndex} upload-demo-wrap-${childIndex}">
-                    <input type="file" class="input_file-${childIndex} demo-img-${childIndex} changeImg" data-id="${childIndex}" hidden>
+                    <input type="file" class="input_file-${childIndex} demo-img-${childIndex} changeImg" data-id="${childIndex}" hidden accept="image/png, image/gif, image/jpeg">
                     <input type="hidden" class="baseImg-${childIndex}" name="baseImg[${childIndex}]" value="">
                 </div>
                 <div>
@@ -611,10 +655,9 @@ function addChild() {
             </div>
         </div>
         `
-    )
+    );
     addUpload(childIndex);
 }
-
 
 function handelShowModal() {
     $(".modal-fixed").css("display", "block");
@@ -622,27 +665,26 @@ function handelShowModal() {
 }
 
 function selected(input) {
-    var id = input.getAttribute('data-id');
-    var className = '.select' + id;
+    var id = input.getAttribute("data-id");
+    var className = ".select" + id;
     var val = $(className).val();
-    if (val == 'First day of semester') {
+    if (val == "First day of semester") {
         $(".date-select-" + id).css("display", "none");
     } else {
         $(".date-select-" + id).css("display", "block");
     }
 }
 
-$(".choose-calendar").one('change', function() {
+$(".choose-calendar").one("change", function() {
     $(".modal-show-calendar").css("display", "block");
-})
+});
 
 $(".choose-calendar").datepicker();
-$('.birthDay').datepicker();
+$(".birthDay").datepicker();
 
 $(".close-btn-modal").click(function() {
     $(".modal-show-calendar").css("display", "none");
-})
-
+});
 
 function addUpload(value) {
     var resizeUpload = $(".upload-demo-wrap-" + value).croppie({
@@ -654,52 +696,50 @@ function addUpload(value) {
         },
         boundary: {
             width: 300,
-            height: 300
+            height: 300,
         },
         update: function(data) {
-            resizeUpload.croppie('result', {
-                type: 'base64',
-                size: 'viewport'
-            }).then(function(res) {
-                $(".baseImg-" + value).val(res);
-            });
-        }
+            resizeUpload
+                .croppie("result", {
+                    type: "base64",
+                    size: "viewport",
+                })
+                .then(function(res) {
+                    $(".baseImg-" + value).val(res);
+                });
+        },
     });
 
-
-    $('.input_file-' + value).on('change', function() {
+    $(".input_file-" + value).on("change", function() {
         preViewImg(this);
     });
 
     function preViewImg(input) {
-        var id = input.getAttribute('data-id');
+        var id = input.getAttribute("data-id");
         if (input.files && input.files[0]) {
             var reader = new FileReader();
             reader.onload = function(e) {
-                resizeUpload.croppie('bind', {
-                        url: e.target.result
+                resizeUpload.croppie("bind", {
+                        url: e.target.result,
                     }),
-                    resizeUpload.croppie('result', {
-                        type: 'base64',
-                    }).then(function(base) {
-                        console.log(base);
-                    });
-            }
+                    resizeUpload
+                    .croppie("result", {
+                        type: "base64",
+                    })
+                    .then(function(base) {});
+            };
             reader.readAsDataURL(input.files[0]);
         }
     }
 
-
-    $('.birthDay').datepicker();
-    $('.choose-calendar').datepicker();
+    $(".birthDay").datepicker();
+    $(".choose-calendar").datepicker();
 }
 
 function loadImgDemo(items) {
-    var id = items.getAttribute('data-id');
+    var id = items.getAttribute("data-id");
     $(".demo-img-" + id).click();
-
 }
-
 
 //upload default
 var croppie_obj = $(".upload-demo-wrap").croppie({
@@ -711,182 +751,220 @@ var croppie_obj = $(".upload-demo-wrap").croppie({
     },
     boundary: {
         width: 300,
-        height: 300
+        height: 300,
     },
     update: function() {
-        croppie_obj.croppie('result', {
-            type: 'base64',
-            size: 'viewport'
-        }).then(function(res) {
-            $(".baseImg-1").val(res);
-            console.log(res);
-
-        });
-    }
+        croppie_obj
+            .croppie("result", {
+                type: "base64",
+                size: "viewport",
+            })
+            .then(function(res) {
+                $(".baseImg-1").val(res);
+            });
+    },
 });
 
-$('body').on('change', '.input_file', function() {
+$("body").on("change", ".input_file", function() {
     input = this;
     if (input.files && input.files[0]) {
         var reader = new FileReader();
         reader.onload = function(e) {
-            croppie_obj.croppie('bind', {
-                url: e.target.result
-            }).then(function() {
-
-            }).catch(function(e) {
-                console.log('Error', e);
-            });
-        }
+            croppie_obj
+                .croppie("bind", {
+                    url: e.target.result,
+                })
+                .then(function() {})
+                .catch(function(e) {
+                    console.log("Error", e);
+                });
+        };
         reader.readAsDataURL(input.files[0]);
     }
 });
 
-
-$('.upload').on('click', function() {
-    $('#image').click();
-})
-
-
+$(".upload").on("click", function() {
+    $("#image").click();
+});
 
 //remove child append
 function myFunction(item) {
-    var id = item.getAttribute('data-id');
-    var ele = document.querySelector('.child' + id);
+    var id = item.getAttribute("data-id");
+    var ele = document.querySelector(".child" + id);
     ele.remove();
 }
 
-
 //send ajax
 function sendAjax() {
-
     var dataFor = [];
     for (i = 1; i <= childIndex; i++) {
         var dataForItems = {
-            'family_name': $("input[name='familyName[" + i + "]']").val(),
-            'given_name': $("input[name='givenName[" + i + "]']").val(),
-            'birth_day': $("input[name='birthDay[" + i + "]']").val(),
-            'school_id': $("input[name='schoolId[" + i + "]']").val(),
-            'grade': $("input[name='grade[" + i + "]']").val(),
-            'gender': $("[name='flexRadioDefault[" + i + "]']:checked").val(),
-            'select_type': $("[name='selectType[" + i + "]']").val(),
-            'date_choose': $("input[name='date-choose[" + i + "]']").val(),
-            'route': $("[name='route[" + i + "]']:checked").val(),
-            'description': $("textarea[name='description[" + i + "]']").val(),
-            'base_img': $("input[name='baseImg[" + i + "]']").val(),
-        }
+            family_name: $("input[name='familyName[" + i + "]']").val(),
+            given_name: $("input[name='givenName[" + i + "]']").val(),
+            date_of_birth: $("input[name='birthDay[" + i + "]']").val(),
+            school_code: $("input[name='schoolId[" + i + "]']").val(),
+            grade: $("input[name='grade[" + i + "]']").val(),
+            gender: $("[name='flexRadioDefault[" + i + "]']:checked").val(),
+            type_of_service: $("[name='selectType[" + i + "]']").val(),
+            date_start: $("input[name='date-choose[" + i + "]']").val(),
+            route_service: $("[name='route[" + i + "]']:checked").val(),
+            descriptions: $("textarea[name='description[" + i + "]']").val(),
+            image: $("input[name='baseImg[" + i + "]']").val(),
+        };
         dataFor.push(dataForItems);
     }
 
-
     var _token = $('input[name="_token"]').val();
 
-    var dataBelow = $("[name='detailBelow']:checked").val()
+    var dataBelow = $("[name='detailBelow']:checked").val();
     if (dataBelow == undefined) {
-        var valueBelow = null
+        var valueBelow = null;
     } else {
-        var valueBelow = $("[name='detailBelow']:checked").val()
+        var valueBelow = $("[name='detailBelow']:checked").val();
     }
 
     var allData = {
-        'father': {
-            'father_family_name': $("#fatherFamilyName").val(),
-            'father_first_name': $("#fatherFirstName").val(),
-            'father_mobile_phone': $("#fatherMobilePhone").val(),
-            'father_office_phone': $("#fatherOfficePhone").val(),
-            'father_email_address': $("#fatherEmailAddress").val(),
+        parents: {
+            father: {
+                family_name: $("#fatherFamilyName").val(),
+                first_name: $("#fatherFirstName").val(),
+                mobile_phone: $("#fatherMobilePhone").val(),
+                office_phone: $("#fatherOfficePhone").val(),
+                email_address: $("#fatherEmailAddress").val(),
+                type: 'father',
+            },
+            mother: {
+                family_name: $("#motherFamilyName").val(),
+                first_name: $("#motherFirstName").val(),
+                mobile_phone: $("#motherMobilePhone").val(),
+                office_phone: $("#motherOfficePhone").val(),
+                email_address: $("#motherEmailAddress").val(),
+                type: 'mother',
+            },
+            guardian: {
+                family_name: $("#guardianFamilyName").val(),
+                first_name: $("#guardianFirstName").val(),
+                mobile_phone: $("#guardianMobilePhone").val(),
+                office_phone: $("#guardianOfficePhone").val(),
+                email_address: $("#guardianEmailAddress").val(),
+                type: 'guardian',
+            },
         },
-        'mother': {
-            'mother_family_name': $("#motherFamilyName").val(),
-            'mother_first_name': $("#motherFirstName").val(),
-            'mother_mobile_phone': $("#motherMobilePhone").val(),
-            'mother_office_phone': $("#motherOfficePhone").val(),
-            'mother_email_address': $("#motherEmailAddress").val(),
+        people_contact: $("[name='peopleContact']:checked").val(),
+        payment_bill: $("[name='paymentCheck']:checked").val(),
+        detail_below: valueBelow,
+        location: {
+            block: $("#block").val(),
+            street: $("#street").val(),
+            postal_code: parseInt($("#postalCode").val()),
+            unit: $("#unit").val(),
+            building: $("#building").val(),
         },
-        'people_contact': $("[name='peopleContact']:checked").val(),
-        'payment_bill': $("[name='paymentCheck']:checked").val(),
-        'detail_below': valueBelow,
-        'guardian': {
-            'guardian_family_name': $("#guardianFamilyName").val(),
-            'guardian_first_name': $("#guardianFirstName").val(),
-            'guardian_mobile_phone': $("#guardianMobilePhone").val(),
-            'guardian_office_phone': $("#guardianOfficePhone").val(),
-            'guardian_email_address': $("#guardianEmailAddress").val(),
+        company: {
+            company_name: $("#companyName").val(),
+            address_to: $("#billingAddress").val(),
+            attention: $("#attention").val(),
+            email_address: $("#billingEmailAddress").val(),
         },
-        'building_address': {
-            'block': $("#block").val(),
-            'street': $("#street").val(),
-            'postal_code': $("#postalCode").val(),
-            'unit': $("#unit").val(),
-            'building': $("#building").val(),
-        },
-        'company_address': {
-            'company_name': $("#companyName").val(),
-            'building_address': $("#billingAddress").val(),
-            'attention': $("#attention").val(),
-            'billing_email_address': $("#billingEmailAddress").val(),
-        },
-        'child_info': dataFor
-    }
-
+        child_info: dataFor,
+    };
 
     $.ajax({
-        url: 'check',
-        method: 'POST',
+        url: "check",
+        method: "POST",
         data: {
             _token: _token,
-            dataAll: allData
+            dataAll: allData,
         },
         success: function(data) {
-            console.log(data);
-        }
-    })
+            if (data.success == false) {
+                let errorArr = [];
+                let error = '';
+                for (const [key, value] of Object.entries(data.message)) {
+                    errorArr.push(value[0]);
+                    error += `<p>${value[0]}</p>`
+                }
+                $(".error_message").html(error);
+                $(window).scrollTop(0);
+            } else {
+                $(".message_success").text(data.message);
+                $(".error_message").text("");
+            }
+        },
+    });
 }
 
-if ($("[name='peopleContact']:checked").val() == 'mother' && $("[name='paymentCheck']:checked").val() == 'mother') {
+if (
+    $("[name='peopleContact']:checked").val() == "mother" &&
+    $("[name='paymentCheck']:checked").val() == "mother"
+) {
     addRequiredMother();
     removeRequiredFather();
     removeRequiredGuardian();
-    removeNameFather()
-} else if ($("[name='peopleContact']:checked").val() == 'mother' && $("[name='paymentCheck']:checked").val() == 'other') {
+    removeNameFather();
+} else if (
+    $("[name='peopleContact']:checked").val() == "mother" &&
+    $("[name='paymentCheck']:checked").val() == "other"
+) {
     addRequiredMother();
     removeRequiredFather();
     removeRequiredGuardian();
-    removeNameFather()
+    removeNameFather();
     removeNamedGuardian();
-} else if ($("[name='peopleContact']:checked").val() == 'mother' && $("[name='paymentCheck']:checked").val() == 'father') {
+} else if (
+    $("[name='peopleContact']:checked").val() == "mother" &&
+    $("[name='paymentCheck']:checked").val() == "father"
+) {
     addRequiredMother();
     addRequiredFather();
     removeRequiredGuardian();
     removeNamedGuardian();
-} else if ($("[name='peopleContact']:checked").val() == 'father' && $("[name='paymentCheck']:checked").val() == 'father') {
+} else if (
+    $("[name='peopleContact']:checked").val() == "father" &&
+    $("[name='paymentCheck']:checked").val() == "father"
+) {
     addRequiredFather();
     removeRequiredMother();
     removeRequiredGuardian();
     removeNameMother();
     removeNamedGuardian();
-} else if ($("[name='peopleContact']:checked").val() == 'father' && $("[name='paymentCheck']:checked").val() == 'mother') {
+} else if (
+    $("[name='peopleContact']:checked").val() == "father" &&
+    $("[name='paymentCheck']:checked").val() == "mother"
+) {
     addRequiredFather();
     addRequiredMother();
     removeRequiredGuardian();
     removeNamedGuardian();
-} else if ($("[name='peopleContact']:checked").val() == 'father' && $("[name='paymentCheck']:checked").val() == 'other') {
+} else if (
+    $("[name='peopleContact']:checked").val() == "father" &&
+    $("[name='paymentCheck']:checked").val() == "other"
+) {
     addRequiredFather();
     removeRequiredMother();
     removeRequiredGuardian();
     removeNameMother();
     removeNamedGuardian();
-} else if ($("[name='peopleContact']:checked").val() == 'guardian' && $("[name='paymentCheck']:checked").val() == 'father') {
+} else if (
+    $("[name='peopleContact']:checked").val() == "guardian" &&
+    $("[name='paymentCheck']:checked").val() == "father"
+) {
     addRequiredGuardian();
     addRequiredFather();
     removeRequiredMother();
     removeNameMother();
-} else if ($("[name='peopleContact']:checked").val() == 'guardian' && $("[name='paymentCheck']:checked").val() == 'mother') {
+} else if (
+    $("[name='peopleContact']:checked").val() == "guardian" &&
+    $("[name='paymentCheck']:checked").val() == "mother"
+) {
     addRequiredGuardian();
     removeRequiredFather();
     addRequiredMother();
     removeNameFather();
-} else if ($("[name='peopleContact']:checked").val() == 'guardian' && $("[name='paymentCheck']:checked").val() == 'other') {
+} else if (
+    $("[name='peopleContact']:checked").val() == "guardian" &&
+    $("[name='paymentCheck']:checked").val() == "other"
+) {
     addRequiredGuardian();
     removeRequiredFather();
     removeRequiredMother();

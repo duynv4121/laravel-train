@@ -64,6 +64,18 @@
     .croppie-container{
         height: auto; !important;
     }
+
+    .error_message{
+        text-align: center;
+        color: red;
+        margin: 20px auto;   
+    }
+
+    .message_success{
+        text-align: center;
+        color: green;
+        margin: 20px auto;  
+    }
 </style>
 <body>
     <div style="display: none;" class="modal-fixed">
@@ -124,6 +136,7 @@
         </div>
     </div>
 
+    <div class="error_message"></div>
     <div class="container">
         <form id="parentInformation">
         @csrf
@@ -260,8 +273,8 @@
                                             placeholder="eg: 123 / 123B">
                                 </div>
                                 <div class="form-group">
-                                    <label for="fatherFirstName">Unit Number <span class="required_label">*</span></label>
-                                    <input name="unit" type="text" class="form-control" id="unit"
+                                    <label for="fatherFirstName">Unit Number</label>
+                                    <input name="unit" type="number" class="form-control" id="unit"
                                             placeholder="eg: 01-15">
                                 </div>
                             </div>
@@ -274,7 +287,7 @@
                                             placeholder="eg: Orchard Road">
                                 </div>
                                 <div class="form-group">
-                                    <label for="fatherFirstName">Name of Building / Condominium<span class="required_label">*</span></label>
+                                    <label for="fatherFirstName">Name of Building / Condominium</label>
                                     <input name="building" type="text" class="form-control" id="building"
                                             placeholder="eg: Orchard Tower">
                                 </div>
@@ -380,12 +393,12 @@
                                                 placeholder="eg: dd/mm/yyyy">       
                                     </div>
                                     <div class="form-group">
-                                        <label for="fatherFirstName">Student ID <span class="required_label">*</span></label>
+                                        <label for="fatherFirstName">Student ID</label>
                                         <input name="schoolId[1]" type="text" class="form-control schoolId" id="unit"
                                                 placeholder="eg: G1">                            
                                     </div>
                                     <div class="form-group">
-                                        <label for="fatherFirstName">Grade <span class="required_label">*</span></label>
+                                        <label for="fatherFirstName">Grade</label>
                                         <input name="grade[1]" type="text" class="form-control grade"
                                                 placeholder="eg: 99985610001">
                                     </div>
@@ -473,7 +486,7 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="upload-demo-wrap">
-                                    <input type="file" class="input_file demo-img-1" hidden id="image">
+                                    <input type="file" class="input_file demo-img-1" hidden id="image" accept="image/png, image/gif, image/jpeg">
                                     <input type="hidden" class="baseImg-1" name="baseImg[1]" value="">
                                 </div>
                                 <div>
@@ -520,6 +533,7 @@
                         </div>
                     </li>
                 </ul>
+                <div class="message_success"></div>
                 <a id="submit" class="btn btn-danger mt-5">Submit</a>
             </div>
 
