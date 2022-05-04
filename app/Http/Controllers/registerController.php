@@ -51,10 +51,9 @@ class registerController extends Controller
             'child_info.*.date_start.after_or_equal' => 'Start date of child :position must be greater than current date',
             'child_info.*.grade.between' => 'Characters grade of child :position greater than 10',
             'child_info.*.school_code.between' => 'Characters student id of child :position greater than 10',
-
-
-
         ];
+
+
         foreach ($dataAll['parents'] as $key => $parent) { 
             if($parent['family_name'] || $parent['first_name'] || $data['dataAll']['people_contact'] == $key ) {
                 $parents[$key] = $parent;
@@ -65,6 +64,7 @@ class registerController extends Controller
                 $vmParents[] = $parent;
             }
         }
+        $data['dataAll']['parents'] = $parents;
 
         $rule = [
             'payment_bill' => 'required',
@@ -100,7 +100,6 @@ class registerController extends Controller
         ];
     
 
-        
         if($dataAll['payment_bill'] == 'other'){
             $rule = array_merge($rule, $ruleCompany);
         }
@@ -170,7 +169,6 @@ class registerController extends Controller
                 }else{
                     $vm['image'] = null;
                 }
-
                 $child = Children::create($vm);
             }
 
